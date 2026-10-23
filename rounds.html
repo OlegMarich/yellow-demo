@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="uk" class="is-auth-pending">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<meta name="description" content="Обхід камер: колір LS / RS (1–7 з чвертями) і температура, ранок і вечір">
+		<title>Обхід · Yellow WMS</title>
+		<script type="module" crossorigin="" src="./js/rounds.min.js?v=1792787865104"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/ui.min.js?v=1792787865104">
+		<link rel="modulepreload" crossorigin="" href="./js/icon.min.js?v=1792787865104">
+		<link rel="modulepreload" crossorigin="" href="./js/toast.min.js?v=1792787865104">
+		<link rel="stylesheet" crossorigin="" href="./css/ui.min.css?v=1792787865104">
+		<link rel="stylesheet" crossorigin="" href="./css/rounds.min.css?v=1792787865104">
+		<link rel="stylesheet" crossorigin="" href="./css/topbar.min.css?v=1792787865104">
+	</head>
+	<body class="mobile">
+		<!-- Mobile shell: navy top bar · one task per screen · action in the thumb zone -->
+		<div data-fls-ui="" class="mobile__app">
+			<!--
+Ripening round (обхід): for every chamber the colour of each side (from/to on the 1–7 scale with
+steps 3 → 3* → 3+ → 4) and the temperature. Morning / evening. Logic: rounds.js, server: /api/rounds
+-->
+			<div data-fls-rounds="" class="rounds" data-page-perm="chambers.gasday">
+				<!-- topbar · mobile header (navy). Title & sync state are updated by the page script. -->
+				<header data-fls-topbar="" class="topbar">
+					<button type="button" class="topbar__back" data-back="" aria-label="Назад">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-chevron-left"></use>
+						</svg>
+					</button>
+					<h1 class="topbar__title" data-topbar-title="">Склад</h1>
+					<button type="button" class="sync-pill sync-pill--online" data-sync-pill="" data-go="queue" aria-live="polite">
+						<span class="sync-pill__dot" aria-hidden="true"></span>
+						<span class="sync-pill__label">онлайн</span>
+					</button>
+				</header>
+				<section class="screen" data-title="Обхід">
+					<div class="screen__body">
+						<div class="rounds__head">
+							<div class="segmented segmented--lg" role="radiogroup" aria-label="Обхід" data-kind="">
+								<button type="button" class="segmented__option" role="radio" aria-checked="false" data-value="morning">Ранок</button>
+								<button type="button" class="segmented__option" role="radio" aria-checked="false" data-value="evening">Вечір</button>
+							</div>
+							<label class="rounds__all">
+								<input type="checkbox" data-all="">
+								Усі камери
+							</label>
+						</div>
+						<p class="screen__hint" data-summary=""></p>
+						<div class="rounds__list" data-list=""></div>
+					</div>
+					<div class="screen__footer screen__footer--plain">
+						<div class="toast-slot" data-toasts=""></div>
+					</div>
+				</section>
+				<template id="round-card">
+					<article class="round-card">
+						<header class="round-card__head">
+							<span class="round-card__num" data-slot="num"></span>
+							<span class="round-card__meta">
+								<b data-slot="supplier"></b>
+								<span data-slot="gas"></span>
+							</span>
+							<span class="round-card__done" data-slot="done" hidden>✓</span>
+						</header>
+						<div class="round-card__side" data-side="ls">
+							<span class="round-card__label">LS</span>
+							<div class="round-card__steps" data-steps=""></div>
+							<input class="field__input round-card__text" data-text="" placeholder="3+/4" inputmode="text" autocapitalize="off" spellcheck="false">
+						</div>
+						<div class="round-card__side" data-side="rs">
+							<span class="round-card__label">RS</span>
+							<div class="round-card__steps" data-steps=""></div>
+							<input class="field__input round-card__text" data-text="" placeholder="4" inputmode="text" autocapitalize="off" spellcheck="false">
+						</div>
+						<div class="round-card__row">
+							<label class="round-card__temp">
+								<span>Температура</span>
+								<input class="field__input" type="number" inputmode="decimal" step="0.1" min="-5" max="40" data-temp="">
+								°C
+							</label>
+							<button type="button" class="btn btn--primary btn--lg" data-save="">Зберегти</button>
+						</div>
+						<p class="round-card__last" data-slot="last"></p>
+					</article>
+				</template>
+			</div>
+		</div>
+	</body>
+</html>

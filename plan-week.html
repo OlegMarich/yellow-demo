@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en" class="is-auth-pending">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<meta name="description" content="Upload the Sales Plan and see the week by client and day">
+		<title>Plan Week · Yellow WMS</title>
+		<script type="module" crossorigin="" src="./js/plan-week.min.js?v=1792787865108"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/ui.min.js?v=1792787865108">
+		<link rel="modulepreload" crossorigin="" href="./js/icon.min.js?v=1792787865108">
+		<link rel="modulepreload" crossorigin="" href="./js/site.min.js?v=1792787865108">
+		<link rel="modulepreload" crossorigin="" href="./js/app-shell.min.js?v=1792787865108">
+		<link rel="modulepreload" crossorigin="" href="./js/toast.min.js?v=1792787865108">
+		<link rel="modulepreload" crossorigin="" href="./js/format.min.js?v=1792787865108">
+		<link rel="modulepreload" crossorigin="" href="./js/dropzone.min.js?v=1792787865108">
+		<link rel="stylesheet" crossorigin="" href="./css/ui.min.css?v=1792787865108">
+		<link rel="stylesheet" crossorigin="" href="./css/app-shell.min.css?v=1792787865108">
+		<link rel="stylesheet" crossorigin="" href="./css/dropzone.min.css?v=1792787865108">
+		<link rel="stylesheet" crossorigin="" href="./css/plan-week.min.css?v=1792787865108">
+		<link rel="stylesheet" crossorigin="" href="./css/data-table.min.css?v=1792787865108">
+	</head>
+	<body>
+		<!-- Desktop shell: sidebar · main · drawer (Yellow WMS) -->
+		<div data-fls-ui="" data-fls-app-shell="" class="app-shell">
+			<!-- app-bar · shown below 992px instead of the sidebar. Burger = template "menu" module (data-fls-menu) -->
+			<header class="app-bar" data-fls-lp="">
+				<button type="button" class="icon-menu app-bar__burger" data-fls-menu="" aria-label="Menu" aria-controls="app-sidebar">
+					<span></span>
+				</button>
+				<a href="index.html" class="app-bar__brand" aria-label="Yellow WMS · Today">
+					<span class="sidebar__logo">Y</span>
+				</a>
+				<span class="app-bar__title">Plan Week</span>
+			</header>
+			<div class="sidebar-backdrop" data-fls-menu="" aria-hidden="true"></div>
+			<aside data-fls-sidebar="" class="sidebar" id="app-sidebar">
+				<div class="sidebar__top">
+					<a href="index.html" class="sidebar__brand">
+						<span class="sidebar__logo">Y</span>
+						<span class="sidebar__name">Yellow WMS</span>
+					</a>
+					<button type="button" class="btn btn--icon sidebar__close" data-fls-menu="" aria-label="Close menu">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-close"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="sidebar__facility">
+					<span class="sidebar__facility-name" data-site-name="">Budapest Ripening</span>
+					<span class="sidebar__date" data-sidebar-date="">30 chambers</span>
+				</div>
+				<nav class="sidebar__nav" aria-label="Main">
+					<a href="index.html" data-perm="dashboard.view" class="sidebar__item" aria-current="false" title="Today">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-home"></use>
+						</svg>
+						<span class="sidebar__label">Today</span>
+					</a>
+					<a href="chambers.html" data-perm="chambers.view" class="sidebar__item" aria-current="false" title="Chambers">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-grid"></use>
+						</svg>
+						<span class="sidebar__label">Chambers</span>
+					</a>
+					<a href="plan-week.html" data-perm="plans.upload" class="sidebar__item sidebar__item--active" aria-current="page" title="Plan Week">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-calendar"></use>
+						</svg>
+						<span class="sidebar__label">Plan Week</span>
+					</a>
+					<a href="ripening-plan.html" data-perm="ripening.generate" class="sidebar__item" aria-current="false" title="Ripening Plan">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-flame"></use>
+						</svg>
+						<span class="sidebar__label">Ripening Plan</span>
+					</a>
+					<a href="stock.html" data-perm="stock.fill stock.reconcile reports.download" class="sidebar__item" aria-current="false" title="Stock">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-box"></use>
+						</svg>
+						<span class="sidebar__label">Stock</span>
+					</a>
+					<a href="reports.html" data-perm="reports.download" class="sidebar__item" aria-current="false" title="Reports">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-chart"></use>
+						</svg>
+						<span class="sidebar__label">Reports</span>
+					</a>
+					<a href="scanner.html" data-perm="scanner.receive" class="sidebar__item" aria-current="false" title="Receiving">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-scan"></use>
+						</svg>
+						<span class="sidebar__label">Receiving</span>
+					</a>
+					<a href="outbound.html" data-perm="scanner.ship scanner.market" class="sidebar__item" aria-current="false" title="Outbound">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-inbox"></use>
+						</svg>
+						<span class="sidebar__label">Outbound</span>
+					</a>
+					<a href="rounds.html" data-perm="chambers.gasday" class="sidebar__item" aria-current="false" title="Rounds">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-clock"></use>
+						</svg>
+						<span class="sidebar__label">Rounds</span>
+					</a>
+					<a href="users.html" data-perm="users.manage settings.edit" class="sidebar__item" aria-current="false" title="Settings">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-sliders"></use>
+						</svg>
+						<span class="sidebar__label">Settings</span>
+					</a>
+				</nav>
+				<!-- interface language (services/i18n.js fills the options) -->
+				<select class="lang-select sidebar__lang" data-lang-select="" aria-label="Language"></select>
+				<!-- signed-in user · filled by sidebar.js when the session is known -->
+				<div class="sidebar__user" data-sidebar-user="">
+					<span class="avatar sidebar__avatar" data-slot="avatar" aria-hidden="true"></span>
+					<span class="sidebar__user-info">
+						<span class="sidebar__user-name" data-slot="name"></span>
+						<span class="sidebar__user-role" data-slot="role"></span>
+					</span>
+					<button type="button" class="btn btn--icon sidebar__logout" data-logout="" aria-label="Sign out" title="Sign out">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-logout"></use>
+						</svg>
+					</button>
+				</div>
+				<!-- server version from /api/health (filled by sidebar.js) -->
+				<span class="sidebar__version" data-sidebar-version="" hidden></span>
+			</aside>
+			<main class="app-shell__main page">
+				<!-- Plan Week · upload the Sales Plan, see the week by client and day. Data: GET /api/ui/plan-week?week=N (plan-week.js) -->
+				<div data-fls-plan-week="" class="plan-week" data-page-perm="plans.upload">
+					<header class="page-head">
+						<div class="page-head__titles">
+							<h1 class="page-head__title">
+								Plan Week ·
+								<span data-slot="week-title">…</span>
+							</h1>
+							<p class="page-head__subtitle">
+								<span data-slot="range"></span>
+								the Sales Plan drives ripening, orders and the loading list.
+							</p>
+						</div>
+						<div class="page-head__actions">
+							<div class="segmented" role="radiogroup" aria-label="Week" data-segmented="week" data-slot="weeks"></div>
+						</div>
+					</header>
+					<div class="plan-week__top">
+						<!-- Upload -->
+						<section class="panel" aria-labelledby="upload-title">
+							<header class="panel__head">
+								<div>
+									<h2 class="panel__title" id="upload-title">Upload Sales Plan</h2>
+									<p class="panel__meta">One file per week. Uploading again replaces the week's plan.</p>
+								</div>
+							</header>
+							<form class="panel__body plan-week__form" data-upload-form="">
+								<!-- dropzone · drag a file here or click. Locals: name (expected file, e.g. sales.xlsx), pattern (regex for the name), hint -->
+								<div data-fls-dropzone="" class="dropzone" data-pattern="^sales.*[.]xlsx$" data-expected="sales.xlsx">
+									<input type="file" accept=".xlsx" class="visually-hidden" id="sales-file" data-dropzone-input="">
+									<label class="dropzone__area" for="sales-file">
+										<span class="dropzone__icon" aria-hidden="true">
+											<svg class="icon">
+												<use href="./assets/img/spritemap.svg#sprite-upload"></use>
+											</svg>
+										</span>
+										<span class="dropzone__text">
+											<b class="dropzone__title" data-dropzone-title="">
+												Drop
+												<span class="mono">sales.xlsx</span>
+												here
+											</b>
+											<span class="dropzone__hint" data-dropzone-hint="">Sales Plan export, one week</span>
+										</span>
+										<span class="btn btn--secondary dropzone__btn">Choose file</span>
+									</label>
+								</div>
+								<div class="plan-week__row">
+									<label class="field plan-week__week">
+										<span class="field__label">Week</span>
+										<input class="field__input" type="number" name="week" min="1" max="53" required>
+									</label>
+									<button type="submit" class="btn btn--primary" data-upload-submit="" disabled>Generate week plan</button>
+								</div>
+							</form>
+						</section>
+						<!-- What the upload produced -->
+						<section class="panel" aria-labelledby="files-title">
+							<header class="panel__head">
+								<h2 class="panel__title" id="files-title" data-slot="files-title">Week</h2>
+								<span class="badge badge--dot" data-week-status=""></span>
+							</header>
+							<ul class="plan-week__files" data-slot="files"></ul>
+							<footer class="panel__foot plan-week__next">
+								Next:
+								<a href="ripening-plan.html" class="panel__link">Ripening Plan →</a>
+							</footer>
+						</section>
+					</div>
+					<!-- Sales Plan table -->
+					<section class="panel" aria-labelledby="sales-title">
+						<header class="panel__head plan-week__head">
+							<div>
+								<h2 class="panel__title" id="sales-title">Sales Plan by client</h2>
+								<p class="panel__meta">Boxes per delivery day. Totals count the rows you see.</p>
+							</div>
+							<div class="plan-week__filters">
+								<input type="search" class="field__input plan-week__search" placeholder="Client or location" aria-label="Filter clients" data-search="">
+								<div class="segmented" role="radiogroup" aria-label="Product" data-segmented="product">
+									<button type="button" class="segmented__option segmented__option--active" role="radio" aria-checked="true" data-value="all">All</button>
+									<button type="button" class="segmented__option" role="radio" aria-checked="false" data-value="BANANA">Banana</button>
+									<button type="button" class="segmented__option" role="radio" aria-checked="false" data-value="BANANA_BIO">BIO</button>
+									<button type="button" class="segmented__option" role="radio" aria-checked="false" data-value="ANANAS">Pineapple</button>
+									<button type="button" class="segmented__option" role="radio" aria-checked="false" data-value="BANANA_MARKET">Market</button>
+								</div>
+							</div>
+						</header>
+						<div class="plan-week__table-wrap">
+							<table class="data-table plan-week__table" data-sales-table="">
+								<thead class="data-table__head">
+									<tr data-slot="head"></tr>
+								</thead>
+								<tbody data-slot="body"></tbody>
+								<tfoot>
+									<tr class="plan-week__total" data-totals=""></tr>
+								</tfoot>
+							</table>
+							<div class="empty-state plan-week__empty" data-empty="" hidden>
+								<p class="empty-state__title" data-slot="empty-title">No clients match</p>
+								<p class="empty-state__text" data-slot="empty-text">Clear the search or pick another product.</p>
+							</div>
+						</div>
+					</section>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

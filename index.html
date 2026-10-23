@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" class="is-auth-pending">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<meta name="description" content="Yellow WMS — today at the ripening facility">
+		<title>Today · Yellow WMS</title>
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1792787865111"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/ui.min.js?v=1792787865111">
+		<link rel="modulepreload" crossorigin="" href="./js/icon.min.js?v=1792787865111">
+		<link rel="modulepreload" crossorigin="" href="./js/site.min.js?v=1792787865111">
+		<link rel="modulepreload" crossorigin="" href="./js/app-shell.min.js?v=1792787865111">
+		<link rel="modulepreload" crossorigin="" href="./js/toast.min.js?v=1792787865111">
+		<link rel="modulepreload" crossorigin="" href="./js/format.min.js?v=1792787865111">
+		<link rel="stylesheet" crossorigin="" href="./css/ui.min.css?v=1792787865111">
+		<link rel="stylesheet" crossorigin="" href="./css/app-shell.min.css?v=1792787865111">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1792787865111">
+	</head>
+	<body>
+		<!-- Desktop shell: sidebar · main · drawer (Yellow WMS) -->
+		<div data-fls-ui="" data-fls-app-shell="" class="app-shell">
+			<!-- app-bar · shown below 992px instead of the sidebar. Burger = template "menu" module (data-fls-menu) -->
+			<header class="app-bar" data-fls-lp="">
+				<button type="button" class="icon-menu app-bar__burger" data-fls-menu="" aria-label="Menu" aria-controls="app-sidebar">
+					<span></span>
+				</button>
+				<a href="index.html" class="app-bar__brand" aria-label="Yellow WMS · Today">
+					<span class="sidebar__logo">Y</span>
+				</a>
+				<span class="app-bar__title">Today</span>
+			</header>
+			<div class="sidebar-backdrop" data-fls-menu="" aria-hidden="true"></div>
+			<aside data-fls-sidebar="" class="sidebar" id="app-sidebar">
+				<div class="sidebar__top">
+					<a href="index.html" class="sidebar__brand">
+						<span class="sidebar__logo">Y</span>
+						<span class="sidebar__name">Yellow WMS</span>
+					</a>
+					<button type="button" class="btn btn--icon sidebar__close" data-fls-menu="" aria-label="Close menu">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-close"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="sidebar__facility">
+					<span class="sidebar__facility-name" data-site-name="">Budapest Ripening</span>
+					<span class="sidebar__date" data-sidebar-date="">30 chambers</span>
+				</div>
+				<nav class="sidebar__nav" aria-label="Main">
+					<a href="index.html" data-perm="dashboard.view" class="sidebar__item sidebar__item--active" aria-current="page" title="Today">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-home"></use>
+						</svg>
+						<span class="sidebar__label">Today</span>
+					</a>
+					<a href="chambers.html" data-perm="chambers.view" class="sidebar__item" aria-current="false" title="Chambers">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-grid"></use>
+						</svg>
+						<span class="sidebar__label">Chambers</span>
+					</a>
+					<a href="plan-week.html" data-perm="plans.upload" class="sidebar__item" aria-current="false" title="Plan Week">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-calendar"></use>
+						</svg>
+						<span class="sidebar__label">Plan Week</span>
+					</a>
+					<a href="ripening-plan.html" data-perm="ripening.generate" class="sidebar__item" aria-current="false" title="Ripening Plan">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-flame"></use>
+						</svg>
+						<span class="sidebar__label">Ripening Plan</span>
+					</a>
+					<a href="stock.html" data-perm="stock.fill stock.reconcile reports.download" class="sidebar__item" aria-current="false" title="Stock">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-box"></use>
+						</svg>
+						<span class="sidebar__label">Stock</span>
+					</a>
+					<a href="reports.html" data-perm="reports.download" class="sidebar__item" aria-current="false" title="Reports">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-chart"></use>
+						</svg>
+						<span class="sidebar__label">Reports</span>
+					</a>
+					<a href="scanner.html" data-perm="scanner.receive" class="sidebar__item" aria-current="false" title="Receiving">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-scan"></use>
+						</svg>
+						<span class="sidebar__label">Receiving</span>
+					</a>
+					<a href="outbound.html" data-perm="scanner.ship scanner.market" class="sidebar__item" aria-current="false" title="Outbound">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-inbox"></use>
+						</svg>
+						<span class="sidebar__label">Outbound</span>
+					</a>
+					<a href="rounds.html" data-perm="chambers.gasday" class="sidebar__item" aria-current="false" title="Rounds">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-clock"></use>
+						</svg>
+						<span class="sidebar__label">Rounds</span>
+					</a>
+					<a href="users.html" data-perm="users.manage settings.edit" class="sidebar__item" aria-current="false" title="Settings">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-sliders"></use>
+						</svg>
+						<span class="sidebar__label">Settings</span>
+					</a>
+				</nav>
+				<!-- interface language (services/i18n.js fills the options) -->
+				<select class="lang-select sidebar__lang" data-lang-select="" aria-label="Language"></select>
+				<!-- signed-in user · filled by sidebar.js when the session is known -->
+				<div class="sidebar__user" data-sidebar-user="">
+					<span class="avatar sidebar__avatar" data-slot="avatar" aria-hidden="true"></span>
+					<span class="sidebar__user-info">
+						<span class="sidebar__user-name" data-slot="name"></span>
+						<span class="sidebar__user-role" data-slot="role"></span>
+					</span>
+					<button type="button" class="btn btn--icon sidebar__logout" data-logout="" aria-label="Sign out" title="Sign out">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-logout"></use>
+						</svg>
+					</button>
+				</div>
+				<!-- server version from /api/health (filled by sidebar.js) -->
+				<span class="sidebar__version" data-sidebar-version="" hidden></span>
+			</aside>
+			<main class="app-shell__main page">
+				<div data-fls-index="" class="index" data-page-perm="dashboard.view">
+					<header class="page-head">
+						<div class="page-head__titles">
+							<h1 class="page-head__title">Today</h1>
+							<p class="page-head__subtitle" data-today-subtitle="">Loading…</p>
+						</div>
+						<div class="page-head__actions">
+							<a href="#" class="btn btn--secondary" data-perm="reports.download" data-total-link="">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-download"></use>
+								</svg>
+								Download Total
+							</a>
+							<a href="ripening-plan.html" class="btn btn--secondary" data-perm="ripening.generate">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-flame"></use>
+								</svg>
+								Generate Ripening Plan
+							</a>
+							<button type="button" class="btn btn--primary index__cta" data-perm="stock.fill" data-fill-day="">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-box"></use>
+								</svg>
+								Fill stock day
+							</button>
+						</div>
+					</header>
+					<!-- KPI tiles, alerts and chamber bars are rendered by index.js from GET /api/ui/today -->
+					<section class="index__kpis" aria-label="Today in numbers" data-fls-kpi-tile="" data-today-kpis="">
+						<span class="kpi-tile kpi-tile--skeleton"></span>
+						<span class="kpi-tile kpi-tile--skeleton"></span>
+						<span class="kpi-tile kpi-tile--skeleton"></span>
+						<span class="kpi-tile kpi-tile--skeleton"></span>
+						<span class="kpi-tile kpi-tile--skeleton"></span>
+						<span class="kpi-tile kpi-tile--skeleton"></span>
+					</section>
+					<div class="index__grid">
+						<section class="panel" aria-labelledby="attention-title">
+							<header class="panel__head">
+								<h2 class="panel__title" id="attention-title">Needs attention</h2>
+								<span class="panel__meta" data-alerts-count=""></span>
+							</header>
+							<ul data-fls-alert-list="" class="alert-list" data-today-alerts=""></ul>
+							<p class="panel__foot">Alerts clear themselves when the underlying data is fixed.</p>
+						</section>
+						<section class="panel" aria-labelledby="chambers-title">
+							<header class="panel__head">
+								<h2 class="panel__title" id="chambers-title">Chambers</h2>
+								<a href="chambers.html" class="panel__link">Open map →</a>
+							</header>
+							<div class="panel__body index__map">
+								<!-- chamber-bars · compact fill overview of all chambers (dashboard). Rendered by the page (pages/index/_render.js). -->
+								<div data-fls-chamber-bars="" class="chamber-bars" data-chamber-bars=""></div>
+								<ul class="chamber-legend">
+									<li class="chamber-legend__item chamber-legend__item--regular">Banana</li>
+									<li class="chamber-legend__item chamber-legend__item--bio">BIO</li>
+									<li class="chamber-legend__item chamber-legend__item--citro">CITRO</li>
+									<li class="chamber-legend__item chamber-legend__item--empty">Empty</li>
+								</ul>
+							</div>
+						</section>
+					</div>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

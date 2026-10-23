@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en" class="is-auth-pending">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<meta name="description" content="Chamber map, placements and gas days">
+		<title>Chambers · Yellow WMS</title>
+		<script type="module" crossorigin="" src="./js/chambers.min.js?v=1792787865113"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/ui.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/_drawer.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/site.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/app-shell.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/icon.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/toast.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/format.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/_damage.min.js?v=1792787865113">
+		<link rel="stylesheet" crossorigin="" href="./css/ui.min.css?v=1792787865113">
+		<link rel="stylesheet" crossorigin="" href="./css/_drawer.min.css?v=1792787865113">
+		<link rel="stylesheet" crossorigin="" href="./css/app-shell.min.css?v=1792787865113">
+		<link rel="stylesheet" crossorigin="" href="./css/_damage.min.css?v=1792787865113">
+		<link rel="stylesheet" crossorigin="" href="./css/chambers.min.css?v=1792787865113">
+		<link rel="stylesheet" crossorigin="" href="./css/data-table.min.css?v=1792787865113">
+	</head>
+	<body>
+		<!-- Desktop shell: sidebar · main · drawer (Yellow WMS) -->
+		<div data-fls-ui="" data-fls-app-shell="" class="app-shell">
+			<!-- app-bar · shown below 992px instead of the sidebar. Burger = template "menu" module (data-fls-menu) -->
+			<header class="app-bar" data-fls-lp="">
+				<button type="button" class="icon-menu app-bar__burger" data-fls-menu="" aria-label="Menu" aria-controls="app-sidebar">
+					<span></span>
+				</button>
+				<a href="index.html" class="app-bar__brand" aria-label="Yellow WMS · Today">
+					<span class="sidebar__logo">Y</span>
+				</a>
+				<span class="app-bar__title">Chambers</span>
+			</header>
+			<div class="sidebar-backdrop" data-fls-menu="" aria-hidden="true"></div>
+			<aside data-fls-sidebar="" class="sidebar" id="app-sidebar">
+				<div class="sidebar__top">
+					<a href="index.html" class="sidebar__brand">
+						<span class="sidebar__logo">Y</span>
+						<span class="sidebar__name">Yellow WMS</span>
+					</a>
+					<button type="button" class="btn btn--icon sidebar__close" data-fls-menu="" aria-label="Close menu">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-close"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="sidebar__facility">
+					<span class="sidebar__facility-name" data-site-name="">Budapest Ripening</span>
+					<span class="sidebar__date" data-sidebar-date="">30 chambers</span>
+				</div>
+				<nav class="sidebar__nav" aria-label="Main">
+					<a href="index.html" data-perm="dashboard.view" class="sidebar__item" aria-current="false" title="Today">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-home"></use>
+						</svg>
+						<span class="sidebar__label">Today</span>
+					</a>
+					<a href="chambers.html" data-perm="chambers.view" class="sidebar__item sidebar__item--active" aria-current="page" title="Chambers">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-grid"></use>
+						</svg>
+						<span class="sidebar__label">Chambers</span>
+					</a>
+					<a href="plan-week.html" data-perm="plans.upload" class="sidebar__item" aria-current="false" title="Plan Week">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-calendar"></use>
+						</svg>
+						<span class="sidebar__label">Plan Week</span>
+					</a>
+					<a href="ripening-plan.html" data-perm="ripening.generate" class="sidebar__item" aria-current="false" title="Ripening Plan">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-flame"></use>
+						</svg>
+						<span class="sidebar__label">Ripening Plan</span>
+					</a>
+					<a href="stock.html" data-perm="stock.fill stock.reconcile reports.download" class="sidebar__item" aria-current="false" title="Stock">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-box"></use>
+						</svg>
+						<span class="sidebar__label">Stock</span>
+					</a>
+					<a href="reports.html" data-perm="reports.download" class="sidebar__item" aria-current="false" title="Reports">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-chart"></use>
+						</svg>
+						<span class="sidebar__label">Reports</span>
+					</a>
+					<a href="scanner.html" data-perm="scanner.receive" class="sidebar__item" aria-current="false" title="Receiving">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-scan"></use>
+						</svg>
+						<span class="sidebar__label">Receiving</span>
+					</a>
+					<a href="outbound.html" data-perm="scanner.ship scanner.market" class="sidebar__item" aria-current="false" title="Outbound">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-inbox"></use>
+						</svg>
+						<span class="sidebar__label">Outbound</span>
+					</a>
+					<a href="rounds.html" data-perm="chambers.gasday" class="sidebar__item" aria-current="false" title="Rounds">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-clock"></use>
+						</svg>
+						<span class="sidebar__label">Rounds</span>
+					</a>
+					<a href="users.html" data-perm="users.manage settings.edit" class="sidebar__item" aria-current="false" title="Settings">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-sliders"></use>
+						</svg>
+						<span class="sidebar__label">Settings</span>
+					</a>
+				</nav>
+				<!-- interface language (services/i18n.js fills the options) -->
+				<select class="lang-select sidebar__lang" data-lang-select="" aria-label="Language"></select>
+				<!-- signed-in user · filled by sidebar.js when the session is known -->
+				<div class="sidebar__user" data-sidebar-user="">
+					<span class="avatar sidebar__avatar" data-slot="avatar" aria-hidden="true"></span>
+					<span class="sidebar__user-info">
+						<span class="sidebar__user-name" data-slot="name"></span>
+						<span class="sidebar__user-role" data-slot="role"></span>
+					</span>
+					<button type="button" class="btn btn--icon sidebar__logout" data-logout="" aria-label="Sign out" title="Sign out">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-logout"></use>
+						</svg>
+					</button>
+				</div>
+				<!-- server version from /api/health (filled by sidebar.js) -->
+				<span class="sidebar__version" data-sidebar-version="" hidden></span>
+			</aside>
+			<main class="app-shell__main page">
+				<div data-fls-chambers="" class="chambers" data-page-perm="chambers.view">
+					<header class="page-head">
+						<div class="page-head__titles">
+							<h1 class="page-head__title">Chambers</h1>
+							<!-- filled by chambers.js from the chambers data -->
+							<p class="page-head__subtitle" data-chambers-summary="">Loading…</p>
+						</div>
+						<div class="segmented" role="radiogroup" aria-label="Filter chambers" data-segmented="chamber-filter">
+							<button type="button" class="segmented__option segmented__option--active" role="radio" aria-checked="true" tabindex="0" data-value="all">
+								All
+								<span class="segmented__count" data-count="all"></span>
+							</button>
+							<button type="button" class="segmented__option" role="radio" aria-checked="false" tabindex="-1" data-value="regular">
+								Regular
+								<span class="segmented__count" data-count="regular"></span>
+							</button>
+							<button type="button" class="segmented__option" role="radio" aria-checked="false" tabindex="-1" data-value="bio">
+								BIO
+								<span class="segmented__count" data-count="bio"></span>
+							</button>
+							<button type="button" class="segmented__option" role="radio" aria-checked="false" tabindex="-1" data-value="empty">
+								Empty
+								<span class="segmented__count" data-count="empty"></span>
+							</button>
+							<button type="button" class="segmented__option" role="radio" aria-checked="false" tabindex="-1" data-value="no-gas-day">
+								No gas day
+								<span class="segmented__count" data-count="no-gas-day"></span>
+							</button>
+						</div>
+					</header>
+					<!--
+chamber-map · the building: left column 1–14 + 29 · central aisle · right column 15–28 + 30.
+Tiles are rendered by chamber-map.js from the API (GET /api/ui/chambers; demo: chambers.json).
+Tiles open the chamber drawer. Filter = segmented[data-segmented="chamber-filter"].
+-->
+					<section data-fls-chamber-map="" class="chamber-map is-loading" aria-label="Chambers map" aria-busy="true">
+						<div class="chamber-map__column chamber-map__column--left" data-column="left"></div>
+						<span class="chamber-map__aisle" aria-hidden="true">central aisle</span>
+						<div class="chamber-map__column chamber-map__column--right" data-column="right"></div>
+						<p class="chamber-map__message" data-map-message="" hidden></p>
+					</section>
+					<!-- gas-days · ripener sets the gas (ripening) day per chamber; the ripening plan reads it from here -->
+					<section data-fls-gas-days="" class="panel gas-days" aria-labelledby="gas-days-title">
+						<header class="panel__head gas-days__head">
+							<div class="gas-days__titles">
+								<h2 class="panel__title" id="gas-days-title">Gas days</h2>
+								<p class="panel__meta">
+									The ripening plan reads the day from here. Chambers without a day are planned by container delivery date.
+								</p>
+							</div>
+							<span class="panel__meta gas-days__status" data-gas-status="" aria-live="polite">All changes saved</span>
+						</header>
+						<div class="gas-days__scroll">
+							<table class="data-table gas-days__table">
+								<thead class="data-table__head">
+									<tr>
+										<th scope="col">Ch.</th>
+										<th scope="col">Product</th>
+										<th scope="col" class="data-table__cell--num">Boxes</th>
+										<th scope="col">Containers</th>
+										<th scope="col">Gas day</th>
+										<th scope="col">Client tag</th>
+										<th scope="col">
+											<span class="visually-hidden">Save</span>
+										</th>
+									</tr>
+								</thead>
+								<tbody data-gas-body="">
+									<!-- rows rendered by gas-days.js from the chambers data -->
+									<tr>
+										<td colspan="7" class="gas-days__empty">Loading…</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+				</div>
+			</main>
+			<!-- Chamber drawer · filled by chamber-map.js from the chambers data (GET /api/ui/chambers) -->
+			<aside class="drawer chamber-drawer" data-chamber-drawer="" hidden aria-labelledby="drawer-title">
+				<header class="drawer__header">
+					<h2 class="drawer__title" id="drawer-title">
+						<span data-slot="title">Chamber</span>
+						<span class="chip" data-slot="chip"></span>
+					</h2>
+					<button type="button" class="btn btn--icon drawer__close" data-drawer-close="" aria-label="Close">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-close"></use>
+						</svg>
+					</button>
+				</header>
+				<!-- CITRO 30 -->
+				<section class="drawer__section chamber-drawer__citro-view">
+					<p class="chamber-drawer__meta">Non-conforming goods held in CITRO.</p>
+					<div class="chamber-drawer__citro">
+						<div class="chamber-drawer__citro-cell">
+							<span>R+T</span>
+							<b data-slot="rt">0</b>
+						</div>
+						<div class="chamber-drawer__citro-cell">
+							<span>GS</span>
+							<b data-slot="gs">0</b>
+						</div>
+						<div class="chamber-drawer__citro-cell">
+							<span>DEC</span>
+							<b data-slot="dec">0</b>
+						</div>
+					</div>
+				</section>
+				<!-- Regular / BIO / empty -->
+				<div class="chamber-drawer__stock-view">
+					<section class="drawer__section">
+						<p class="chamber-drawer__total">
+							<b data-slot="boxes">0</b>
+							<span data-slot="capacity">/ 2 268 boxes</span>
+						</p>
+						<span class="progress progress--lg progress--banana" data-slot="bar" role="presentation">
+							<span class="progress__fill"></span>
+						</span>
+						<p class="chamber-drawer__meta" data-slot="meta"></p>
+					</section>
+					<section class="drawer__section" data-slot="round">
+						<h3 class="drawer__section-title">
+							Last round
+							<span class="chamber-drawer__when" data-slot="round-when">
+								<span data-slot="round-date"></span>
+								·
+								<span data-slot="round-kind"></span>
+							</span>
+						</h3>
+						<p class="chamber-drawer__meta" data-slot="round-none">No round yet</p>
+						<div class="chamber-drawer__citro" data-slot="round-cells">
+							<div class="chamber-drawer__citro-cell">
+								<span>LS</span>
+								<b data-slot="round-ls">—</b>
+							</div>
+							<div class="chamber-drawer__citro-cell">
+								<span>RS</span>
+								<b data-slot="round-rs">—</b>
+							</div>
+							<div class="chamber-drawer__citro-cell">
+								<span>°C</span>
+								<b data-slot="round-temp">—</b>
+							</div>
+						</div>
+						<a class="btn btn--secondary btn--block" href="rounds.html" data-slot="round-link">Open rounds</a>
+					</section>
+					<form class="drawer__section" data-gas-form="">
+						<h3 class="drawer__section-title">Gas day for whole chamber</h3>
+						<div class="banner banner--compact" data-slot="no-day" hidden>
+							<div class="banner__body">No gas day set. This chamber will be planned by container delivery date.</div>
+						</div>
+						<div class="chamber-drawer__fields">
+							<label class="field">
+								<span class="field__label">Date</span>
+								<input type="date" class="field__input" data-slot="gas" name="gas">
+							</label>
+							<label class="field" data-slot="tag-field">
+								<span class="field__label">Client tag (BIO)</span>
+								<input type="text" class="field__input" data-slot="tag" name="tag" placeholder="e.g. LABAS BIO" autocomplete="off">
+							</label>
+						</div>
+						<button type="submit" class="btn btn--primary btn--block">Set gas day</button>
+					</form>
+					<section class="drawer__section">
+						<h3 class="drawer__section-title">
+							Placements
+							<span data-slot="placement-count"></span>
+						</h3>
+						<div data-slot="placements"></div>
+						<template id="placement-row">
+							<div class="chamber-drawer__placement">
+								<span class="chamber-drawer__code">
+									<span data-slot="code"></span>
+									<small data-slot="tag"></small>
+								</span>
+								<button type="button" class="btn btn--icon chamber-drawer__info" data-damage="" aria-label="Damage of this container" title="Damage of this container">
+									<svg class="icon" aria-hidden="true">
+										<use href="./assets/img/spritemap.svg#sprite-alert-circle"></use>
+									</svg>
+								</button>
+								<span class="chamber-drawer__side" data-slot="side"></span>
+								<span class="chamber-drawer__boxes" data-slot="boxes"></span>
+							</div>
+						</template>
+					</section>
+					<div class="drawer__actions">
+						<button type="button" class="btn btn--secondary">
+							<svg class="icon" aria-hidden="true">
+								<use href="./assets/img/spritemap.svg#sprite-arrow-right"></use>
+							</svg>
+							Move boxes
+						</button>
+						<button type="button" class="btn btn--danger">
+							<svg class="icon" aria-hidden="true">
+								<use href="./assets/img/spritemap.svg#sprite-trash"></use>
+							</svg>
+							Write off
+						</button>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</body>
+</html>

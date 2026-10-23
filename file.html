@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en" class="is-auth-pending">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<meta name="description" content="Generated Excel file in the app">
+		<title>File · Yellow WMS</title>
+		<script type="module" crossorigin="" src="./js/ui.min.js?v=1792787865112"></script>
+		<script type="module" crossorigin="" src="./js/site.min.js?v=1792787865112"></script>
+		<script type="module" crossorigin="" src="./js/app-shell.min.js?v=1792787865112"></script>
+		<script type="module" crossorigin="" src="./js/icon.min.js?v=1792787865112"></script>
+		<script type="module" crossorigin="" src="./js/toast.min.js?v=1792787865112"></script>
+		<script type="module" crossorigin="" src="./js/file2.min.js?v=1792787865112"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/ui.min.css?v=1792787865112">
+		<link rel="stylesheet" crossorigin="" href="./css/app-shell.min.css?v=1792787865112">
+		<link rel="stylesheet" crossorigin="" href="./css/file.min.css?v=1792787865112">
+	</head>
+	<body>
+		<!-- Desktop shell: sidebar · main · drawer (Yellow WMS) -->
+		<div data-fls-ui="" data-fls-app-shell="" class="app-shell">
+			<!-- app-bar · shown below 992px instead of the sidebar. Burger = template "menu" module (data-fls-menu) -->
+			<header class="app-bar" data-fls-lp="">
+				<button type="button" class="icon-menu app-bar__burger" data-fls-menu="" aria-label="Menu" aria-controls="app-sidebar">
+					<span></span>
+				</button>
+				<a href="index.html" class="app-bar__brand" aria-label="Yellow WMS · Today">
+					<span class="sidebar__logo">Y</span>
+				</a>
+				<span class="app-bar__title">Reports</span>
+			</header>
+			<div class="sidebar-backdrop" data-fls-menu="" aria-hidden="true"></div>
+			<aside data-fls-sidebar="" class="sidebar" id="app-sidebar">
+				<div class="sidebar__top">
+					<a href="index.html" class="sidebar__brand">
+						<span class="sidebar__logo">Y</span>
+						<span class="sidebar__name">Yellow WMS</span>
+					</a>
+					<button type="button" class="btn btn--icon sidebar__close" data-fls-menu="" aria-label="Close menu">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-close"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="sidebar__facility">
+					<span class="sidebar__facility-name" data-site-name="">Budapest Ripening</span>
+					<span class="sidebar__date" data-sidebar-date="">30 chambers</span>
+				</div>
+				<nav class="sidebar__nav" aria-label="Main">
+					<a href="index.html" data-perm="dashboard.view" class="sidebar__item" aria-current="false" title="Today">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-home"></use>
+						</svg>
+						<span class="sidebar__label">Today</span>
+					</a>
+					<a href="chambers.html" data-perm="chambers.view" class="sidebar__item" aria-current="false" title="Chambers">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-grid"></use>
+						</svg>
+						<span class="sidebar__label">Chambers</span>
+					</a>
+					<a href="plan-week.html" data-perm="plans.upload" class="sidebar__item" aria-current="false" title="Plan Week">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-calendar"></use>
+						</svg>
+						<span class="sidebar__label">Plan Week</span>
+					</a>
+					<a href="ripening-plan.html" data-perm="ripening.generate" class="sidebar__item" aria-current="false" title="Ripening Plan">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-flame"></use>
+						</svg>
+						<span class="sidebar__label">Ripening Plan</span>
+					</a>
+					<a href="stock.html" data-perm="stock.fill stock.reconcile reports.download" class="sidebar__item" aria-current="false" title="Stock">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-box"></use>
+						</svg>
+						<span class="sidebar__label">Stock</span>
+					</a>
+					<a href="reports.html" data-perm="reports.download" class="sidebar__item sidebar__item--active" aria-current="page" title="Reports">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-chart"></use>
+						</svg>
+						<span class="sidebar__label">Reports</span>
+					</a>
+					<a href="scanner.html" data-perm="scanner.receive" class="sidebar__item" aria-current="false" title="Receiving">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-scan"></use>
+						</svg>
+						<span class="sidebar__label">Receiving</span>
+					</a>
+					<a href="outbound.html" data-perm="scanner.ship scanner.market" class="sidebar__item" aria-current="false" title="Outbound">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-inbox"></use>
+						</svg>
+						<span class="sidebar__label">Outbound</span>
+					</a>
+					<a href="rounds.html" data-perm="chambers.gasday" class="sidebar__item" aria-current="false" title="Rounds">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-clock"></use>
+						</svg>
+						<span class="sidebar__label">Rounds</span>
+					</a>
+					<a href="users.html" data-perm="users.manage settings.edit" class="sidebar__item" aria-current="false" title="Settings">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-sliders"></use>
+						</svg>
+						<span class="sidebar__label">Settings</span>
+					</a>
+				</nav>
+				<!-- interface language (services/i18n.js fills the options) -->
+				<select class="lang-select sidebar__lang" data-lang-select="" aria-label="Language"></select>
+				<!-- signed-in user · filled by sidebar.js when the session is known -->
+				<div class="sidebar__user" data-sidebar-user="">
+					<span class="avatar sidebar__avatar" data-slot="avatar" aria-hidden="true"></span>
+					<span class="sidebar__user-info">
+						<span class="sidebar__user-name" data-slot="name"></span>
+						<span class="sidebar__user-role" data-slot="role"></span>
+					</span>
+					<button type="button" class="btn btn--icon sidebar__logout" data-logout="" aria-label="Sign out" title="Sign out">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-logout"></use>
+						</svg>
+					</button>
+				</div>
+				<!-- server version from /api/health (filled by sidebar.js) -->
+				<span class="sidebar__version" data-sidebar-version="" hidden></span>
+			</aside>
+			<main class="app-shell__main page">
+				<!-- File viewer · a generated Excel file drawn in the app + manual fields. Logic: file.js (?path=…) -->
+				<div data-fls-file="" class="file-view" data-page-perm="reports.download plans.upload ripening.generate">
+					<header class="page-head">
+						<div class="page-head__titles">
+							<a href="reports.html" class="file-view__back" data-back="">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-chevron-left"></use>
+								</svg>
+								Reports
+							</a>
+							<h1 class="page-head__title file-view__title" data-title="">Loading file…</h1>
+							<p class="page-head__subtitle" data-meta=""></p>
+						</div>
+						<div class="page-head__actions">
+							<!-- printers of the server PC: shown only when there is more than one -->
+							<select class="lang-select file-view__printer" data-printer="" aria-label="Printer" hidden></select>
+							<button type="button" class="btn btn--secondary" data-print="" disabled>
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-file-check"></use>
+								</svg>
+								Print
+							</button>
+							<a href="#" class="btn btn--primary" data-download="" aria-disabled="true">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-download"></use>
+								</svg>
+								Download .xlsx
+							</a>
+						</div>
+					</header>
+					<div class="file-view__toolbar" data-toolbar="" hidden>
+						<div class="segmented" role="tablist" aria-label="Sheets" data-segmented="sheet" data-sheets="" data-no-i18n=""></div>
+						<div class="file-view__search">
+							<input type="search" class="field__input" placeholder="Find in sheet" aria-label="Find in sheet" data-search="">
+							<span class="file-view__hits" data-hits="" aria-live="polite"></span>
+							<button type="button" class="btn btn--icon" data-hit-prev="" aria-label="Previous match" disabled>
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-chevron-left"></use>
+								</svg>
+							</button>
+							<button type="button" class="btn btn--icon file-view__next" data-hit-next="" aria-label="Next match" disabled>
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-chevron-left"></use>
+								</svg>
+							</button>
+						</div>
+						<div class="segmented" role="radiogroup" aria-label="Zoom" data-segmented="zoom">
+							<button type="button" class="segmented__option segmented__option--active" role="radio" aria-checked="true" data-value="fit">Fit</button>
+							<button type="button" class="segmented__option" role="radio" aria-checked="false" data-value="1">100%</button>
+						</div>
+						<button type="button" class="btn btn--secondary file-view__fields-btn" data-fields-toggle="" aria-expanded="false">
+							<svg class="icon" aria-hidden="true">
+								<use href="./assets/img/spritemap.svg#sprite-sliders"></use>
+							</svg>
+							Manual fields
+							<span class="badge badge--count" data-fields-count="">0</span>
+						</button>
+					</div>
+					<div class="file-view__body">
+						<div class="file-view__stage" data-stage="">
+							<div class="file-view__paper" data-paper="" data-no-i18n=""></div>
+							<div class="empty-state file-view__empty" data-error="" hidden>
+								<p class="empty-state__title" data-error-title="">File not found</p>
+								<p class="empty-state__text" data-error-text=""></p>
+								<a href="reports.html" class="btn btn--secondary">Back to Reports</a>
+							</div>
+						</div>
+						<!-- manual fields: what people fill by hand; survives regeneration -->
+						<aside class="file-view__fields" data-fields="" hidden aria-labelledby="fields-title">
+							<header class="file-view__fields-head">
+								<h2 class="panel__title" id="fields-title">Manual fields</h2>
+								<button type="button" class="btn btn--icon" data-fields-toggle="" aria-label="Close">
+									<svg class="icon" aria-hidden="true">
+										<use href="./assets/img/spritemap.svg#sprite-close"></use>
+									</svg>
+								</button>
+							</header>
+							<p class="file-view__fields-note">
+								Numbers come from the system. Fix them in the data and the file is rebuilt. These fields are filled by hand and are put back every time the file is rebuilt.
+							</p>
+							<ul class="file-view__field-list" data-field-list=""></ul>
+						</aside>
+					</div>
+					<!-- inline editor for one field -->
+					<form class="cell-editor" data-editor="" hidden>
+						<label class="field">
+							<span class="field__label" data-editor-label=""></span>
+							<span data-editor-input=""></span>
+							<span class="field__hint" data-editor-hint=""></span>
+						</label>
+						<div class="cell-editor__actions">
+							<button type="submit" class="btn btn--primary">Save</button>
+							<button type="button" class="btn btn--secondary" data-editor-cancel="">Cancel</button>
+							<button type="button" class="btn btn--ghost cell-editor__reset" data-editor-reset="">Back to generated</button>
+						</div>
+					</form>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

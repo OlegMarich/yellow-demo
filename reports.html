@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en" class="is-auth-pending">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<meta name="description" content="Client reports, shipping cards and day files">
+		<title>Reports · Yellow WMS</title>
+		<script type="module" crossorigin="" src="./js/reports.min.js?v=1792787865107"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/ui.min.js?v=1792787865107">
+		<link rel="modulepreload" crossorigin="" href="./js/icon.min.js?v=1792787865107">
+		<link rel="modulepreload" crossorigin="" href="./js/site.min.js?v=1792787865107">
+		<link rel="modulepreload" crossorigin="" href="./js/app-shell.min.js?v=1792787865107">
+		<link rel="modulepreload" crossorigin="" href="./js/toast.min.js?v=1792787865107">
+		<link rel="modulepreload" crossorigin="" href="./js/format.min.js?v=1792787865107">
+		<link rel="modulepreload" crossorigin="" href="./js/dropzone.min.js?v=1792787865107">
+		<link rel="stylesheet" crossorigin="" href="./css/ui.min.css?v=1792787865107">
+		<link rel="stylesheet" crossorigin="" href="./css/app-shell.min.css?v=1792787865107">
+		<link rel="stylesheet" crossorigin="" href="./css/dropzone.min.css?v=1792787865107">
+		<link rel="stylesheet" crossorigin="" href="./css/reports.min.css?v=1792787865107">
+	</head>
+	<body>
+		<!-- Desktop shell: sidebar · main · drawer (Yellow WMS) -->
+		<div data-fls-ui="" data-fls-app-shell="" class="app-shell">
+			<!-- app-bar · shown below 992px instead of the sidebar. Burger = template "menu" module (data-fls-menu) -->
+			<header class="app-bar" data-fls-lp="">
+				<button type="button" class="icon-menu app-bar__burger" data-fls-menu="" aria-label="Menu" aria-controls="app-sidebar">
+					<span></span>
+				</button>
+				<a href="index.html" class="app-bar__brand" aria-label="Yellow WMS · Today">
+					<span class="sidebar__logo">Y</span>
+				</a>
+				<span class="app-bar__title">Reports</span>
+			</header>
+			<div class="sidebar-backdrop" data-fls-menu="" aria-hidden="true"></div>
+			<aside data-fls-sidebar="" class="sidebar" id="app-sidebar">
+				<div class="sidebar__top">
+					<a href="index.html" class="sidebar__brand">
+						<span class="sidebar__logo">Y</span>
+						<span class="sidebar__name">Yellow WMS</span>
+					</a>
+					<button type="button" class="btn btn--icon sidebar__close" data-fls-menu="" aria-label="Close menu">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-close"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="sidebar__facility">
+					<span class="sidebar__facility-name" data-site-name="">Budapest Ripening</span>
+					<span class="sidebar__date" data-sidebar-date="">30 chambers</span>
+				</div>
+				<nav class="sidebar__nav" aria-label="Main">
+					<a href="index.html" data-perm="dashboard.view" class="sidebar__item" aria-current="false" title="Today">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-home"></use>
+						</svg>
+						<span class="sidebar__label">Today</span>
+					</a>
+					<a href="chambers.html" data-perm="chambers.view" class="sidebar__item" aria-current="false" title="Chambers">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-grid"></use>
+						</svg>
+						<span class="sidebar__label">Chambers</span>
+					</a>
+					<a href="plan-week.html" data-perm="plans.upload" class="sidebar__item" aria-current="false" title="Plan Week">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-calendar"></use>
+						</svg>
+						<span class="sidebar__label">Plan Week</span>
+					</a>
+					<a href="ripening-plan.html" data-perm="ripening.generate" class="sidebar__item" aria-current="false" title="Ripening Plan">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-flame"></use>
+						</svg>
+						<span class="sidebar__label">Ripening Plan</span>
+					</a>
+					<a href="stock.html" data-perm="stock.fill stock.reconcile reports.download" class="sidebar__item" aria-current="false" title="Stock">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-box"></use>
+						</svg>
+						<span class="sidebar__label">Stock</span>
+					</a>
+					<a href="reports.html" data-perm="reports.download" class="sidebar__item sidebar__item--active" aria-current="page" title="Reports">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-chart"></use>
+						</svg>
+						<span class="sidebar__label">Reports</span>
+					</a>
+					<a href="scanner.html" data-perm="scanner.receive" class="sidebar__item" aria-current="false" title="Receiving">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-scan"></use>
+						</svg>
+						<span class="sidebar__label">Receiving</span>
+					</a>
+					<a href="outbound.html" data-perm="scanner.ship scanner.market" class="sidebar__item" aria-current="false" title="Outbound">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-inbox"></use>
+						</svg>
+						<span class="sidebar__label">Outbound</span>
+					</a>
+					<a href="rounds.html" data-perm="chambers.gasday" class="sidebar__item" aria-current="false" title="Rounds">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-clock"></use>
+						</svg>
+						<span class="sidebar__label">Rounds</span>
+					</a>
+					<a href="users.html" data-perm="users.manage settings.edit" class="sidebar__item" aria-current="false" title="Settings">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-sliders"></use>
+						</svg>
+						<span class="sidebar__label">Settings</span>
+					</a>
+				</nav>
+				<!-- interface language (services/i18n.js fills the options) -->
+				<select class="lang-select sidebar__lang" data-lang-select="" aria-label="Language"></select>
+				<!-- signed-in user · filled by sidebar.js when the session is known -->
+				<div class="sidebar__user" data-sidebar-user="">
+					<span class="avatar sidebar__avatar" data-slot="avatar" aria-hidden="true"></span>
+					<span class="sidebar__user-info">
+						<span class="sidebar__user-name" data-slot="name"></span>
+						<span class="sidebar__user-role" data-slot="role"></span>
+					</span>
+					<button type="button" class="btn btn--icon sidebar__logout" data-logout="" aria-label="Sign out" title="Sign out">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-logout"></use>
+						</svg>
+					</button>
+				</div>
+				<!-- server version from /api/health (filled by sidebar.js) -->
+				<span class="sidebar__version" data-sidebar-version="" hidden></span>
+			</aside>
+			<main class="app-shell__main page">
+				<!-- Reports · generate the day's documents from the transport plan, download them. Data: GET /api/ui/reports?date= (reports.js) -->
+				<div data-fls-reports="" class="reports" data-page-perm="reports.download plans.upload">
+					<header class="page-head">
+						<div class="page-head__titles">
+							<h1 class="page-head__title">Reports</h1>
+							<p class="page-head__subtitle">Client reports, shipping cards and day files, made from the transport plan.</p>
+						</div>
+						<div class="page-head__actions">
+							<input type="date" class="field__input reports__date" aria-label="Day" data-date="">
+						</div>
+					</header>
+					<div class="reports__top">
+						<section class="panel" aria-labelledby="run-title" data-perm="plans.upload">
+							<header class="panel__head">
+								<div>
+									<h2 class="panel__title" id="run-title">Generate day documents</h2>
+									<p class="panel__meta">Upload the transport plan for this day. Everything below is rebuilt.</p>
+								</div>
+							</header>
+							<form class="panel__body reports__form" data-run-form="">
+								<!-- dropzone · drag a file here or click. Locals: name (expected file, e.g. sales.xlsx), pattern (regex for the name), hint -->
+								<div data-fls-dropzone="" class="dropzone" data-pattern="^PLAN_week_[0-9]+[.]xlsx$" data-expected="PLAN_week_N.xlsx">
+									<input type="file" accept=".xlsx" class="visually-hidden" id="plan-file" data-dropzone-input="">
+									<label class="dropzone__area" for="plan-file">
+										<span class="dropzone__icon" aria-hidden="true">
+											<svg class="icon">
+												<use href="./assets/img/spritemap.svg#sprite-upload"></use>
+											</svg>
+										</span>
+										<span class="dropzone__text">
+											<b class="dropzone__title" data-dropzone-title="">
+												Drop
+												<span class="mono">PLAN_week_N.xlsx</span>
+												here
+											</b>
+											<span class="dropzone__hint" data-dropzone-hint="">Transport plan, file name like PLAN_week_41.xlsx</span>
+										</span>
+										<span class="btn btn--secondary dropzone__btn">Choose file</span>
+									</label>
+								</div>
+								<button type="submit" class="btn btn--primary" data-run-submit="" disabled>Generate documents</button>
+							</form>
+						</section>
+						<section class="panel reports__last" aria-labelledby="last-title">
+							<header class="panel__head">
+								<h2 class="panel__title" id="last-title">
+									Last run ·
+									<span data-slot="date-label"></span>
+								</h2>
+								<span class="badge badge--dot" data-slot="last-badge"></span>
+							</header>
+							<dl class="reports__facts">
+								<div>
+									<dt>Generated</dt>
+									<dd data-last-at="">—</dd>
+								</div>
+								<div>
+									<dt>By</dt>
+									<dd data-last-by="">—</dd>
+								</div>
+								<div>
+									<dt>Trips</dt>
+									<dd data-last-trips="">—</dd>
+								</div>
+								<div>
+									<dt>Files</dt>
+									<dd data-last-files="">—</dd>
+								</div>
+							</dl>
+							<p class="panel__foot reports__source">
+								From
+								<span class="mono" data-last-file="">—</span>
+							</p>
+						</section>
+					</div>
+					<section class="panel" aria-labelledby="docs-title">
+						<header class="panel__head reports__head">
+							<h2 class="panel__title" id="docs-title">Documents</h2>
+							<div class="reports__filters">
+								<input type="search" class="field__input reports__search" placeholder="Client, truck or file" aria-label="Filter documents" data-search="">
+								<div class="segmented" role="radiogroup" aria-label="Type" data-segmented="doc-type">
+									<button type="button" class="segmented__option segmented__option--active" role="radio" aria-checked="true" data-value="all">All</button>
+									<button type="button" class="segmented__option" role="radio" aria-checked="false" data-value="client">Client reports</button>
+									<button type="button" class="segmented__option" role="radio" aria-checked="false" data-value="card">Shipping cards</button>
+									<button type="button" class="segmented__option" role="radio" aria-checked="false" data-value="day">Day files</button>
+								</div>
+							</div>
+						</header>
+						<!-- day files + one group per trip (car + loading time), rendered by reports.js -->
+						<div class="reports__groups" data-slot="groups"></div>
+						<div class="empty-state reports__empty" data-empty="" hidden>
+							<p class="empty-state__title" data-slot="empty-title">Nothing matches</p>
+							<p class="empty-state__text" data-slot="empty-text">Clear the search or pick another type.</p>
+						</div>
+					</section>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

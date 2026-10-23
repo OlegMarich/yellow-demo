@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en" class="is-auth-pending">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<meta name="description" content="Users, PINs and role permissions">
+		<title>Users &amp;amp; roles · Yellow WMS</title>
+		<script type="module" crossorigin="" src="./js/users.min.js?v=1792787865110"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/ui.min.js?v=1792787865110">
+		<link rel="modulepreload" crossorigin="" href="./js/_drawer.min.js?v=1792787865110">
+		<link rel="modulepreload" crossorigin="" href="./js/icon.min.js?v=1792787865110">
+		<link rel="modulepreload" crossorigin="" href="./js/site.min.js?v=1792787865110">
+		<link rel="modulepreload" crossorigin="" href="./js/app-shell.min.js?v=1792787865110">
+		<link rel="stylesheet" crossorigin="" href="./css/ui.min.css?v=1792787865110">
+		<link rel="stylesheet" crossorigin="" href="./css/_drawer.min.css?v=1792787865110">
+		<link rel="stylesheet" crossorigin="" href="./css/app-shell.min.css?v=1792787865110">
+		<link rel="stylesheet" crossorigin="" href="./css/users.min.css?v=1792787865110">
+		<link rel="stylesheet" crossorigin="" href="./css/data-table.min.css?v=1792787865110">
+	</head>
+	<body>
+		<!-- Desktop shell: sidebar · main · drawer (Yellow WMS) -->
+		<div data-fls-ui="" data-fls-app-shell="" class="app-shell">
+			<!-- app-bar · shown below 992px instead of the sidebar. Burger = template "menu" module (data-fls-menu) -->
+			<header class="app-bar" data-fls-lp="">
+				<button type="button" class="icon-menu app-bar__burger" data-fls-menu="" aria-label="Menu" aria-controls="app-sidebar">
+					<span></span>
+				</button>
+				<a href="index.html" class="app-bar__brand" aria-label="Yellow WMS · Today">
+					<span class="sidebar__logo">Y</span>
+				</a>
+				<span class="app-bar__title">Settings</span>
+			</header>
+			<div class="sidebar-backdrop" data-fls-menu="" aria-hidden="true"></div>
+			<aside data-fls-sidebar="" class="sidebar" id="app-sidebar">
+				<div class="sidebar__top">
+					<a href="index.html" class="sidebar__brand">
+						<span class="sidebar__logo">Y</span>
+						<span class="sidebar__name">Yellow WMS</span>
+					</a>
+					<button type="button" class="btn btn--icon sidebar__close" data-fls-menu="" aria-label="Close menu">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-close"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="sidebar__facility">
+					<span class="sidebar__facility-name" data-site-name="">Budapest Ripening</span>
+					<span class="sidebar__date" data-sidebar-date="">30 chambers</span>
+				</div>
+				<nav class="sidebar__nav" aria-label="Main">
+					<a href="index.html" data-perm="dashboard.view" class="sidebar__item" aria-current="false" title="Today">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-home"></use>
+						</svg>
+						<span class="sidebar__label">Today</span>
+					</a>
+					<a href="chambers.html" data-perm="chambers.view" class="sidebar__item" aria-current="false" title="Chambers">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-grid"></use>
+						</svg>
+						<span class="sidebar__label">Chambers</span>
+					</a>
+					<a href="plan-week.html" data-perm="plans.upload" class="sidebar__item" aria-current="false" title="Plan Week">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-calendar"></use>
+						</svg>
+						<span class="sidebar__label">Plan Week</span>
+					</a>
+					<a href="ripening-plan.html" data-perm="ripening.generate" class="sidebar__item" aria-current="false" title="Ripening Plan">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-flame"></use>
+						</svg>
+						<span class="sidebar__label">Ripening Plan</span>
+					</a>
+					<a href="stock.html" data-perm="stock.fill stock.reconcile reports.download" class="sidebar__item" aria-current="false" title="Stock">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-box"></use>
+						</svg>
+						<span class="sidebar__label">Stock</span>
+					</a>
+					<a href="reports.html" data-perm="reports.download" class="sidebar__item" aria-current="false" title="Reports">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-chart"></use>
+						</svg>
+						<span class="sidebar__label">Reports</span>
+					</a>
+					<a href="scanner.html" data-perm="scanner.receive" class="sidebar__item" aria-current="false" title="Receiving">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-scan"></use>
+						</svg>
+						<span class="sidebar__label">Receiving</span>
+					</a>
+					<a href="outbound.html" data-perm="scanner.ship scanner.market" class="sidebar__item" aria-current="false" title="Outbound">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-inbox"></use>
+						</svg>
+						<span class="sidebar__label">Outbound</span>
+					</a>
+					<a href="rounds.html" data-perm="chambers.gasday" class="sidebar__item" aria-current="false" title="Rounds">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-clock"></use>
+						</svg>
+						<span class="sidebar__label">Rounds</span>
+					</a>
+					<a href="users.html" data-perm="users.manage settings.edit" class="sidebar__item sidebar__item--active" aria-current="page" title="Settings">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-sliders"></use>
+						</svg>
+						<span class="sidebar__label">Settings</span>
+					</a>
+				</nav>
+				<!-- interface language (services/i18n.js fills the options) -->
+				<select class="lang-select sidebar__lang" data-lang-select="" aria-label="Language"></select>
+				<!-- signed-in user · filled by sidebar.js when the session is known -->
+				<div class="sidebar__user" data-sidebar-user="">
+					<span class="avatar sidebar__avatar" data-slot="avatar" aria-hidden="true"></span>
+					<span class="sidebar__user-info">
+						<span class="sidebar__user-name" data-slot="name"></span>
+						<span class="sidebar__user-role" data-slot="role"></span>
+					</span>
+					<button type="button" class="btn btn--icon sidebar__logout" data-logout="" aria-label="Sign out" title="Sign out">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-logout"></use>
+						</svg>
+					</button>
+				</div>
+				<!-- server version from /api/health (filled by sidebar.js) -->
+				<span class="sidebar__version" data-sidebar-version="" hidden></span>
+			</aside>
+			<main class="app-shell__main page">
+				<!-- Settings · Users & roles. Needs users.manage. Data: GET /api/users, GET /api/users/roles (users.js) -->
+				<div data-fls-users="" class="users" data-page-perm="users.manage">
+					<header class="page-head">
+						<div class="page-head__titles">
+							<h1 class="page-head__title">Users &amp; roles</h1>
+							<p class="page-head__subtitle">Who can sign in, with which PIN, and what each role is allowed to do.</p>
+						</div>
+						<div class="page-head__actions">
+							<button type="button" class="btn btn--primary" data-add-user="" disabled>
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-plus"></use>
+								</svg>
+								Add user
+							</button>
+						</div>
+					</header>
+					<div class="segmented users__tabs" role="tablist" aria-label="Users and roles" data-segmented="users-tab">
+						<button type="button" class="segmented__option segmented__option--active" role="tab" aria-pressed="true" data-value="users">
+							Users
+							<span class="segmented__count" data-count="users">–</span>
+						</button>
+						<button type="button" class="segmented__option" role="tab" aria-pressed="false" data-value="roles">
+							Roles
+							<span class="segmented__count" data-count="roles">–</span>
+						</button>
+						<button type="button" class="segmented__option" role="tab" aria-pressed="false" data-value="devices">
+							Devices
+							<span class="segmented__count" data-count="devices">–</span>
+						</button>
+					</div>
+					<div class="banner banner--danger banner--compact" data-load-error="" hidden>
+						<div class="banner__body"></div>
+					</div>
+					<!-- Users ========================================================== -->
+					<section class="panel" data-tab="users" aria-label="Users">
+						<table class="data-table users__table">
+							<thead class="data-table__head">
+								<tr>
+									<th scope="col">User</th>
+									<th scope="col">Role</th>
+									<th scope="col">PIN</th>
+									<th scope="col">Last sign-in</th>
+									<th scope="col">Status</th>
+									<th scope="col">
+										<span class="visually-hidden">Actions</span>
+									</th>
+								</tr>
+							</thead>
+							<tbody data-user-rows="" aria-busy="true">
+								<tr>
+									<td colspan="6" class="users__loading">Loading users…</td>
+								</tr>
+							</tbody>
+						</table>
+						<template id="user-row">
+							<tr class="data-table__row users__row">
+								<th scope="row">
+									<span class="users__person">
+										<span class="avatar" aria-hidden="true"></span>
+										<b data-cell="name"></b>
+									</span>
+								</th>
+								<td>
+									<span class="role-tag" data-cell="role"></span>
+								</td>
+								<td class="users__muted" data-cell="pin"></td>
+								<td class="users__muted" data-cell="last"></td>
+								<td data-cell="status"></td>
+								<td class="users__actions">
+									<button type="button" class="btn btn--ghost" data-unlock="" hidden>Unlock</button>
+									<button type="button" class="btn btn--secondary" data-edit-user="">Edit</button>
+								</td>
+							</tr>
+						</template>
+					</section>
+					<!-- Roles: permission matrix =========================================== -->
+					<section class="panel" data-tab="roles" aria-label="Roles" hidden>
+						<header class="panel__head">
+							<div>
+								<h2 class="panel__title">What each role can do</h2>
+								<p class="panel__meta">
+									The server checks these permissions on every action. Hiding a button is not enough.
+								</p>
+							</div>
+							<button type="button" class="btn btn--secondary" data-add-role="">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-plus"></use>
+								</svg>
+								New role
+							</button>
+						</header>
+						<div class="users__matrix-wrap">
+							<table class="data-table users__matrix" data-matrix="">
+								<thead class="data-table__head">
+									<tr data-matrix-head="">
+										<th scope="col">Permission</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+						<footer class="panel__foot users__foot">
+							<span class="users__status" data-matrix-status="">Admin always has every permission, so the system can't lose its administrator.</span>
+							<button type="button" class="btn btn--primary" data-matrix-save="" disabled>Saved</button>
+						</footer>
+					</section>
+					<!-- Devices: access from outside the warehouse network, open sessions, backups (devices-tab.js) -->
+					<section class="panel" data-tab="devices" aria-label="Devices" hidden data-devices="">
+						<header class="panel__head">
+							<div>
+								<h2 class="panel__title">Trusted devices</h2>
+								<p class="panel__meta">
+									Outside the warehouse network (mobile data, ngrok) only these devices can open the app, and still with a PIN. A phone becomes trusted after one sign-in on the warehouse Wi-Fi, or with a one-time code.
+								</p>
+							</div>
+							<button type="button" class="btn btn--primary" data-pair-code="">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-plus"></use>
+								</svg>
+								Pairing code
+							</button>
+						</header>
+						<div class="devices__code" data-code-box="" hidden>
+							<p class="devices__code-hint">
+								Enter this code on the phone (sign-in screen → «Код підключення»). Works once, for 10 minutes.
+							</p>
+							<output class="devices__code-value mono" data-code-value=""></output>
+							<span class="devices__code-left" data-code-left=""></span>
+						</div>
+						<p class="devices__mode" data-remote-mode=""></p>
+						<table class="data-table devices__table">
+							<thead class="data-table__head">
+								<tr>
+									<th scope="col">Device</th>
+									<th scope="col">Added</th>
+									<th scope="col">Last seen</th>
+									<th scope="col">
+										<span class="visually-hidden">Actions</span>
+									</th>
+								</tr>
+							</thead>
+							<tbody data-device-rows=""></tbody>
+						</table>
+					</section>
+					<section class="panel" data-tab="devices" aria-label="Open sessions" hidden>
+						<header class="panel__head">
+							<div>
+								<h2 class="panel__title">Open sessions</h2>
+								<p class="panel__meta">
+									Who is signed in right now and from where. Signing a session out ends it at once.
+								</p>
+							</div>
+						</header>
+						<table class="data-table devices__table">
+							<thead class="data-table__head">
+								<tr>
+									<th scope="col">User</th>
+									<th scope="col">Signed in</th>
+									<th scope="col">From</th>
+									<th scope="col">Expires</th>
+									<th scope="col">
+										<span class="visually-hidden">Actions</span>
+									</th>
+								</tr>
+							</thead>
+							<tbody data-session-rows=""></tbody>
+						</table>
+					</section>
+					<section class="panel" data-tab="devices" aria-label="Backups" hidden>
+						<header class="panel__head">
+							<div>
+								<h2 class="panel__title">Backups</h2>
+								<p class="panel__meta" data-backup-status="">…</p>
+							</div>
+							<button type="button" class="btn btn--secondary" data-backup-now="">Back up now</button>
+						</header>
+					</section>
+					<div class="users__toasts" data-toasts="" aria-live="polite"></div>
+					<template id="users-toast">
+						<div class="toast toast--success" role="status">
+							<svg class="icon toast__icon" aria-hidden="true">
+								<use href="./assets/img/spritemap.svg#sprite-check"></use>
+							</svg>
+							<div class="toast__body">
+								<span class="toast__title"></span>
+								<span class="toast__text"></span>
+							</div>
+						</div>
+					</template>
+					<template id="users-toast-error">
+						<div class="toast toast--error" role="alert">
+							<svg class="icon toast__icon" aria-hidden="true">
+								<use href="./assets/img/spritemap.svg#sprite-x-circle"></use>
+							</svg>
+							<div class="toast__body">
+								<span class="toast__title"></span>
+								<span class="toast__text"></span>
+							</div>
+						</div>
+					</template>
+				</div>
+			</main>
+			<!-- Add / edit user · filled by users.js. The server makes the PIN; it is shown here ONCE. -->
+			<aside class="drawer user-drawer" data-user-drawer="" hidden aria-labelledby="user-drawer-title">
+				<header class="drawer__header">
+					<h2 class="drawer__title" id="user-drawer-title" data-slot="title">Add user</h2>
+					<button type="button" class="btn btn--icon drawer__close" data-drawer-close="" aria-label="Close">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-close"></use>
+						</svg>
+					</button>
+				</header>
+				<form class="user-drawer__form" data-user-form="" novalidate>
+					<section class="drawer__section">
+						<label class="field" data-name-field="">
+							<span class="field__label">Name on the sign-in screen</span>
+							<input class="field__input" name="name" placeholder="e.g. Олег М." autocomplete="off" required maxlength="24">
+							<span class="field__hint" data-slot="name-hint">First name + initial is enough. Shown on the login tiles.</span>
+						</label>
+						<label class="field">
+							<span class="field__label">Role</span>
+							<select class="field__input field__select" name="role"><!-- options from GET /api/users/roles --></select>
+							<span class="field__hint">Roles that can manage users get a 6-digit PIN, everyone else 4 digits.</span>
+						</label>
+					</section>
+					<section class="drawer__section">
+						<h3 class="drawer__section-title">PIN</h3>
+						<div class="pin-reveal" data-pin-reveal="">
+							<span class="pin-reveal__digits" data-slot="pin">• • • •</span>
+							<button type="button" class="btn btn--secondary" data-reset-pin="" hidden>Reset PIN</button>
+						</div>
+						<p class="user-drawer__note" data-slot="pin-hint">The PIN is created when you save and shown here once.</p>
+						<div class="banner banner--compact" data-slot="pin-note" hidden>
+							<div class="banner__body">
+								Write it down now and give it to the person. After closing, nobody can see this PIN again, only reset it.
+							</div>
+						</div>
+					</section>
+					<section class="drawer__section user-drawer__danger" data-edit-only="" hidden>
+						<h3 class="drawer__section-title">Access</h3>
+						<p class="user-drawer__note">Disabled users can't sign in. Their history stays, so we never delete people.</p>
+						<button type="button" class="btn btn--danger" data-toggle-disabled="">Disable user</button>
+					</section>
+					<div class="drawer__actions">
+						<button type="submit" class="btn btn--primary" data-slot="submit">Create user</button>
+						<button type="button" class="btn btn--secondary" data-drawer-close="" data-slot="cancel">Cancel</button>
+					</div>
+				</form>
+			</aside>
+		</div>
+	</body>
+</html>

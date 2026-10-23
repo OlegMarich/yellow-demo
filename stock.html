@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" class="is-auth-pending">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<meta name="description" content="Fill the stock day and reconcile it with the responsible person file">
+		<title>Stock · Yellow WMS</title>
+		<script type="module" crossorigin="" src="./js/stock.min.js?v=1792787865113"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/ui.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/site.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/app-shell.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/icon.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/toast.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/format.min.js?v=1792787865113">
+		<link rel="modulepreload" crossorigin="" href="./js/file2.min.js?v=1792787865113">
+		<link rel="stylesheet" crossorigin="" href="./css/ui.min.css?v=1792787865113">
+		<link rel="stylesheet" crossorigin="" href="./css/app-shell.min.css?v=1792787865113">
+		<link rel="stylesheet" crossorigin="" href="./css/file.min.css?v=1792787865113">
+		<link rel="stylesheet" crossorigin="" href="./css/stock.min.css?v=1792787865113">
+		<link rel="stylesheet" crossorigin="" href="./css/data-table.min.css?v=1792787865113">
+	</head>
+	<body>
+		<!-- Desktop shell: sidebar · main · drawer (Yellow WMS) -->
+		<div data-fls-ui="" data-fls-app-shell="" class="app-shell">
+			<!-- app-bar · shown below 992px instead of the sidebar. Burger = template "menu" module (data-fls-menu) -->
+			<header class="app-bar" data-fls-lp="">
+				<button type="button" class="icon-menu app-bar__burger" data-fls-menu="" aria-label="Menu" aria-controls="app-sidebar">
+					<span></span>
+				</button>
+				<a href="index.html" class="app-bar__brand" aria-label="Yellow WMS · Today">
+					<span class="sidebar__logo">Y</span>
+				</a>
+				<span class="app-bar__title">Stock</span>
+			</header>
+			<div class="sidebar-backdrop" data-fls-menu="" aria-hidden="true"></div>
+			<aside data-fls-sidebar="" class="sidebar" id="app-sidebar">
+				<div class="sidebar__top">
+					<a href="index.html" class="sidebar__brand">
+						<span class="sidebar__logo">Y</span>
+						<span class="sidebar__name">Yellow WMS</span>
+					</a>
+					<button type="button" class="btn btn--icon sidebar__close" data-fls-menu="" aria-label="Close menu">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-close"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="sidebar__facility">
+					<span class="sidebar__facility-name" data-site-name="">Budapest Ripening</span>
+					<span class="sidebar__date" data-sidebar-date="">30 chambers</span>
+				</div>
+				<nav class="sidebar__nav" aria-label="Main">
+					<a href="index.html" data-perm="dashboard.view" class="sidebar__item" aria-current="false" title="Today">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-home"></use>
+						</svg>
+						<span class="sidebar__label">Today</span>
+					</a>
+					<a href="chambers.html" data-perm="chambers.view" class="sidebar__item" aria-current="false" title="Chambers">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-grid"></use>
+						</svg>
+						<span class="sidebar__label">Chambers</span>
+					</a>
+					<a href="plan-week.html" data-perm="plans.upload" class="sidebar__item" aria-current="false" title="Plan Week">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-calendar"></use>
+						</svg>
+						<span class="sidebar__label">Plan Week</span>
+					</a>
+					<a href="ripening-plan.html" data-perm="ripening.generate" class="sidebar__item" aria-current="false" title="Ripening Plan">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-flame"></use>
+						</svg>
+						<span class="sidebar__label">Ripening Plan</span>
+					</a>
+					<a href="stock.html" data-perm="stock.fill stock.reconcile reports.download" class="sidebar__item sidebar__item--active" aria-current="page" title="Stock">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-box"></use>
+						</svg>
+						<span class="sidebar__label">Stock</span>
+					</a>
+					<a href="reports.html" data-perm="reports.download" class="sidebar__item" aria-current="false" title="Reports">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-chart"></use>
+						</svg>
+						<span class="sidebar__label">Reports</span>
+					</a>
+					<a href="scanner.html" data-perm="scanner.receive" class="sidebar__item" aria-current="false" title="Receiving">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-scan"></use>
+						</svg>
+						<span class="sidebar__label">Receiving</span>
+					</a>
+					<a href="outbound.html" data-perm="scanner.ship scanner.market" class="sidebar__item" aria-current="false" title="Outbound">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-inbox"></use>
+						</svg>
+						<span class="sidebar__label">Outbound</span>
+					</a>
+					<a href="rounds.html" data-perm="chambers.gasday" class="sidebar__item" aria-current="false" title="Rounds">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-clock"></use>
+						</svg>
+						<span class="sidebar__label">Rounds</span>
+					</a>
+					<a href="users.html" data-perm="users.manage settings.edit" class="sidebar__item" aria-current="false" title="Settings">
+						<svg class="sidebar__icon icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-sliders"></use>
+						</svg>
+						<span class="sidebar__label">Settings</span>
+					</a>
+				</nav>
+				<!-- interface language (services/i18n.js fills the options) -->
+				<select class="lang-select sidebar__lang" data-lang-select="" aria-label="Language"></select>
+				<!-- signed-in user · filled by sidebar.js when the session is known -->
+				<div class="sidebar__user" data-sidebar-user="">
+					<span class="avatar sidebar__avatar" data-slot="avatar" aria-hidden="true"></span>
+					<span class="sidebar__user-info">
+						<span class="sidebar__user-name" data-slot="name"></span>
+						<span class="sidebar__user-role" data-slot="role"></span>
+					</span>
+					<button type="button" class="btn btn--icon sidebar__logout" data-logout="" aria-label="Sign out" title="Sign out">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-logout"></use>
+						</svg>
+					</button>
+				</div>
+				<!-- server version from /api/health (filled by sidebar.js) -->
+				<span class="sidebar__version" data-sidebar-version="" hidden></span>
+			</aside>
+			<main class="app-shell__main page">
+				<div data-fls-stock="" class="stock" data-page-perm="stock.fill stock.reconcile reports.download">
+					<header class="page-head">
+						<div class="page-head__titles">
+							<h1 class="page-head__title">Stock</h1>
+							<p class="page-head__subtitle">
+								Fill the day's stock file from scanner work, then reconcile it with the responsible person's file.
+							</p>
+						</div>
+						<div class="page-head__actions">
+							<input type="date" class="field__input stock__date" aria-label="Stock day" data-stock-date="">
+							<button type="button" class="btn btn--primary stock__cta" data-perm="stock.fill" data-fill-day="">Fill day</button>
+							<a href="#" class="btn btn--secondary" data-download="book">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-download"></use>
+								</svg>
+								Stock file
+							</a>
+							<a href="#" class="btn btn--secondary" data-download="total">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-download"></use>
+								</svg>
+								Total
+							</a>
+						</div>
+					</header>
+					<!-- responsible person's file → POST /api/stock/book/reconcile -->
+					<section data-fls-file-card="" class="file-card" aria-label="Responsible person's file" data-perm="stock.reconcile">
+						<span class="file-card__icon" aria-hidden="true">
+							<svg class="icon">
+								<use href="./assets/img/spritemap.svg#sprite-file-check"></use>
+							</svg>
+						</span>
+						<div class="file-card__text">
+							<span class="file-card__title">Responsible person's file</span>
+							<span class="file-card__meta">Pick their stock .xlsx to compare it with the system for this day</span>
+						</div>
+						<label class="btn btn--secondary file-card__replace">
+							<svg class="icon" aria-hidden="true">
+								<use href="./assets/img/spritemap.svg#sprite-upload"></use>
+							</svg>
+							Choose file
+							<input type="file" accept=".xlsx" class="visually-hidden" data-file-input="">
+						</label>
+						<button type="button" class="btn btn--primary" data-reconcile="" disabled>Reconcile day</button>
+					</section>
+					<div class="stock__grid">
+						<div class="stock__col">
+							<section class="panel" aria-labelledby="totals-title">
+								<header class="panel__head stock__head">
+									<div class="stock__titles">
+										<h2 class="panel__title" id="totals-title">
+											Totals by sheet ·
+											<span data-slot="date"></span>
+										</h2>
+										<p class="panel__meta">
+											System = scans and container register. File = responsible person's stock for this date.
+										</p>
+									</div>
+									<span class="badge badge--dot" data-slot="sheets-badge" hidden></span>
+								</header>
+								<table class="data-table stock__table">
+									<thead class="data-table__head">
+										<tr>
+											<th scope="col">Sheet</th>
+											<th scope="col" class="data-table__cell--num">System</th>
+											<th scope="col" class="data-table__cell--num">File</th>
+											<th scope="col" class="data-table__cell--num">Diff</th>
+										</tr>
+									</thead>
+									<tbody data-slot="sheets">
+										<tr>
+											<td colspan="4" class="stock__empty">Loading…</td>
+										</tr>
+									</tbody>
+								</table>
+							</section>
+							<section class="panel" aria-labelledby="issues-title" data-slot="issues-panel" hidden>
+								<header class="panel__head">
+									<h2 class="panel__title" id="issues-title">
+										Differences ·
+										<span data-slot="issues-count"></span>
+									</h2>
+									<div class="stock__badges" data-slot="issues-badges"></div>
+								</header>
+								<table class="data-table stock__table stock__table--issues">
+									<thead class="data-table__head">
+										<tr>
+											<th scope="col">Status</th>
+											<th scope="col">Client · order</th>
+											<th scope="col">Field</th>
+											<th scope="col" class="data-table__cell--num">System</th>
+											<th scope="col" class="data-table__cell--num">File</th>
+											<th scope="col" class="data-table__cell--num">Diff</th>
+										</tr>
+									</thead>
+									<tbody data-slot="issues"></tbody>
+								</table>
+							</section>
+						</div>
+						<section class="panel" aria-labelledby="unscanned-title">
+							<header class="panel__head stock__head">
+								<div class="stock__titles">
+									<h2 class="panel__title" id="unscanned-title">In transport plan, not scanned</h2>
+									<p class="panel__meta" data-slot="unscanned-meta"></p>
+								</div>
+							</header>
+							<ul class="stock__unscanned" data-slot="unscanned"></ul>
+							<p class="stock__total">
+								<span>Total not scanned</span>
+								<b data-slot="unscanned-total">—</b>
+							</p>
+						</section>
+					</div>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<meta name="description" content="Вхід у Yellow WMS">
+		<title>Вхід · Yellow WMS</title>
+		<script type="module" crossorigin="" src="./js/login.min.js?v=1792787865111"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/ui.min.js?v=1792787865111">
+		<link rel="modulepreload" crossorigin="" href="./js/site.min.js?v=1792787865111">
+		<link rel="stylesheet" crossorigin="" href="./css/ui.min.css?v=1792787865111">
+		<link rel="stylesheet" crossorigin="" href="./css/login.min.css?v=1792787865111">
+		<link rel="stylesheet" crossorigin="" href="./css/camera-overlay.min.css?v=1792787865111">
+	</head>
+	<body class="auth">
+		<!-- Auth shell: one centred card, works the same on a phone and on a desktop -->
+		<main data-fls-ui="" class="auth__main">
+			<!--
+Login: pick yourself → PIN on a big keypad → verify ring → access granted.
+States live on [data-state]: pick · pin · verify · success · locked. Logic: login.js
+-->
+			<div data-fls-login="" class="login" data-state="pick">
+				<section class="login__card" aria-labelledby="login-title">
+					<header class="login__brand">
+						<span class="login__logo" aria-hidden="true">Y</span>
+						<span class="login__brand-text">
+							<b>Yellow WMS</b>
+							<span data-site-name="">Budapest Ripening</span>
+						</span>
+						<select class="lang-select login__lang" data-lang-select="" aria-label="Language"></select>
+					</header>
+					<!-- Step 0 · only in the Android app: which server (pages live on the phone, data on the server) -->
+					<form class="login__step login__server" data-step="server" data-server-form="" hidden novalidate>
+						<h1 class="login__title">Підключення до сервера</h1>
+						<p class="login__hint">
+							Відскануй QR-код на комп’ютері із сервером — той самий, з якого завантажував аплікацію.
+						</p>
+						<button type="button" class="btn btn--primary btn--block" data-server-scan="">Сканувати QR-код</button>
+						<p class="login__or">або введи адресу вручну</p>
+						<label class="field">
+							<span class="field__label">Адреса сервера</span>
+							<input class="field__input" name="server" placeholder="http://192.168.1.10:3000" inputmode="url" autocapitalize="off" autocomplete="off" spellcheck="false" required>
+						</label>
+						<label class="field">
+							<span class="field__label">Назва (необов’язково)</span>
+							<input class="field__input" name="serverName" placeholder="Робота" autocomplete="off" maxlength="30">
+						</label>
+						<p class="login__message is-error" data-server-error="" hidden></p>
+						<button type="submit" class="btn btn--ghost btn--block">Підключити</button>
+						<button type="button" class="btn btn--ghost btn--block" data-server-cancel="" hidden>Скасувати</button>
+					</form>
+					<!-- Step 0b · outside the warehouse network on a device the server doesn't know yet -->
+					<form class="login__step login__server" data-step="pair" data-pair-form="" hidden novalidate>
+						<h1 class="login__title">Пристрій ще не підключений</h1>
+						<p class="login__hint">
+							Ти зараз поза мережею складу. Введи код підключення від адміністратора (Користувачі → Пристрої) або один раз увійди через Wi-Fi складу.
+						</p>
+						<label class="field">
+							<span class="field__label">Код підключення</span>
+							<input class="field__input login__code" name="code" placeholder="XXXX-XXXX" autocapitalize="characters" autocomplete="one-time-code" spellcheck="false" maxlength="9" required>
+						</label>
+						<label class="field">
+							<span class="field__label">Назва пристрою (необов’язково)</span>
+							<input class="field__input" name="name" placeholder="Телефон Петра" autocomplete="off" maxlength="60">
+						</label>
+						<p class="login__message is-error" data-pair-error="" hidden></p>
+						<button type="submit" class="btn btn--primary btn--block">Підключити пристрій</button>
+					</form>
+					<!-- Step 1 · who is working -->
+					<div class="login__step" data-step="pick">
+						<h1 class="login__title" id="login-title">Хто на зміні?</h1>
+						<p class="login__hint">Обери себе, щоб увійти</p>
+						<p class="login__hint login__hint--demo">Demo · PIN 2580 · Admin 258025</p>
+						<ul class="login__users" data-users="" aria-busy="true">
+							<!-- filled from GET /api/auth/users -->
+							<li class="user-tile user-tile--skeleton" aria-hidden="true"></li>
+							<li class="user-tile user-tile--skeleton" aria-hidden="true"></li>
+							<li class="user-tile user-tile--skeleton" aria-hidden="true"></li>
+							<li class="user-tile user-tile--skeleton" aria-hidden="true"></li>
+						</ul>
+						<p class="login__message is-error" data-users-error="" hidden></p>
+						<a class="login__update" data-app-update="" hidden target="_blank" rel="noopener">Є нова версія аплікації — встановити</a>
+						<div class="login__server-line" data-server-line="" hidden>
+							<label class="login__server-pick">
+								Сервер:
+								<select class="login__server-select" data-server-select="" aria-label="Сервер"></select>
+							</label>
+							<button type="button" class="login__server-change" data-server-add="">додати</button>
+							<button type="button" class="login__server-change" data-server-forget="">прибрати</button>
+						</div>
+						<template id="user-tile">
+							<li>
+								<button type="button" class="user-tile">
+									<span class="avatar" aria-hidden="true"></span>
+									<span class="user-tile__text">
+										<span class="user-tile__name"></span>
+										<span class="user-tile__role"></span>
+									</span>
+									<span class="user-tile__last">останній</span>
+								</button>
+							</li>
+						</template>
+					</div>
+					<!-- Step 2 · PIN -->
+					<div class="login__step" data-step="pin" hidden>
+						<div class="login__who">
+							<button type="button" class="login__back" data-back="" aria-label="Обрати іншого користувача">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-chevron-left"></use>
+								</svg>
+							</button>
+							<span class="avatar avatar--lg" data-who-avatar="" aria-hidden="true"></span>
+							<span class="login__who-text">
+								<b data-who-name=""></b>
+								<span data-who-role=""></span>
+							</span>
+						</div>
+						<div class="login__stage">
+							<div class="pin" data-pin="" role="group" aria-label="PIN-код" aria-describedby="login-message"></div>
+							<!-- verify / success overlay (shown over the PIN boxes) -->
+							<div class="verify" data-verify="" aria-hidden="true">
+								<svg class="verify__ring" viewbox="0 0 120 120">
+									<circle class="verify__track" cx="60" cy="60" r="52"></circle>
+									<circle class="verify__bar" cx="60" cy="60" r="52" pathlength="100"></circle>
+									<path class="verify__check" d="M40 61 l13 13 l27 -28" pathlength="100"></path>
+								</svg>
+								<span class="verify__pct" data-verify-pct="">0%</span>
+								<div class="verify__confetti" data-confetti=""></div>
+							</div>
+						</div>
+						<p class="login__message" id="login-message" data-message="" aria-live="polite">Введи PIN</p>
+						<span class="login__badge">
+							<svg class="icon" aria-hidden="true">
+								<use href="./assets/img/spritemap.svg#sprite-check"></use>
+							</svg>
+							Доступ надано
+						</span>
+						<div class="keypad" data-keypad="">
+							<button type="button" class="keypad__key" data-key="1">1</button>
+							<button type="button" class="keypad__key" data-key="2">2</button>
+							<button type="button" class="keypad__key" data-key="3">3</button>
+							<button type="button" class="keypad__key" data-key="4">4</button>
+							<button type="button" class="keypad__key" data-key="5">5</button>
+							<button type="button" class="keypad__key" data-key="6">6</button>
+							<button type="button" class="keypad__key" data-key="7">7</button>
+							<button type="button" class="keypad__key" data-key="8">8</button>
+							<button type="button" class="keypad__key" data-key="9">9</button>
+							<button type="button" class="keypad__key keypad__key--text" data-key="clear">Очистити</button>
+							<button type="button" class="keypad__key" data-key="0">0</button>
+							<button type="button" class="keypad__key keypad__key--icon" data-key="back" aria-label="Стерти цифру">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-delete"></use>
+								</svg>
+							</button>
+						</div>
+					</div>
+				</section>
+				<p class="login__foot">
+					<svg class="icon" aria-hidden="true">
+						<use href="./assets/img/spritemap.svg#sprite-lock"></use>
+					</svg>
+					Забув PIN? Його скидає адміністратор.
+				</p>
+				<!-- Android app: the server's QR code (the /install page on the server PC) -->
+				<div class="camera-overlay" data-server-camera="" hidden role="dialog" aria-modal="true" aria-label="Сканування">
+					<video class="camera-overlay__video" data-server-video="" playsinline="" muted></video>
+					<div class="camera-overlay__top">
+						<span>Сканування</span>
+						<button type="button" class="camera-overlay__close" data-server-camera-close="" aria-label="Закрити камеру">
+							<svg class="icon" aria-hidden="true">
+								<use href="./assets/img/spritemap.svg#sprite-close"></use>
+							</svg>
+						</button>
+					</div>
+					<div class="camera-overlay__center">
+						<div class="camera-overlay__viewfinder camera-overlay__viewfinder--qr">
+							<span class="camera-overlay__corner camera-overlay__corner--tl"></span>
+							<span class="camera-overlay__corner camera-overlay__corner--tr"></span>
+							<span class="camera-overlay__corner camera-overlay__corner--bl"></span>
+							<span class="camera-overlay__corner camera-overlay__corner--br"></span>
+						</div>
+						<span class="camera-overlay__hint" data-server-camera-hint="">Наведи камеру на QR-код на екрані комп’ютера</span>
+					</div>
+					<div class="camera-overlay__bottom">
+						<button type="button" class="camera-overlay__manual" data-server-camera-close="">Ввести вручну</button>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

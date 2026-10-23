@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="uk" class="is-auth-pending">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<meta name="description" content="Приймання: контейнер → палети по коморах, переміщення">
+		<title>Приймання · Yellow WMS</title>
+		<script type="module" crossorigin="" src="./js/ui.min.js?v=1792787865109"></script>
+		<script type="module" crossorigin="" src="./js/icon.min.js?v=1792787865109"></script>
+		<script type="module" crossorigin="" src="./js/format.min.js?v=1792787865109"></script>
+		<script type="module" crossorigin="" src="./js/_damage.min.js?v=1792787865109"></script>
+		<script type="module" crossorigin="" src="./js/scanner2.min.js?v=1792787865109"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/ui.min.css?v=1792787865109">
+		<link rel="stylesheet" crossorigin="" href="./css/_damage.min.css?v=1792787865109">
+		<link rel="stylesheet" crossorigin="" href="./css/scanner.min.css?v=1792787865109">
+		<link rel="stylesheet" crossorigin="" href="./css/topbar.min.css?v=1792787865109">
+		<link rel="stylesheet" crossorigin="" href="./css/camera-overlay.min.css?v=1792787865109">
+	</head>
+	<body class="mobile">
+		<!-- Mobile shell: navy top bar · one task per screen · action in the thumb zone -->
+		<div data-fls-ui="" class="mobile__app">
+			<div data-fls-scanner="" class="scanner" data-offline-ok="" data-page-perm="scanner.receive scanner.ship scanner.market">
+				<!-- topbar · mobile header (navy). Title & sync state are updated by the page script. -->
+				<header data-fls-topbar="" class="topbar">
+					<button type="button" class="topbar__back" data-back="" aria-label="Назад">
+						<svg class="icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-chevron-left"></use>
+						</svg>
+					</button>
+					<h1 class="topbar__title" data-topbar-title="">Склад</h1>
+					<button type="button" class="sync-pill sync-pill--online" data-sync-pill="" data-go="queue" aria-live="polite">
+						<span class="sync-pill__dot" aria-hidden="true"></span>
+						<span class="sync-pill__label">онлайн</span>
+					</button>
+				</header>
+				<div class="banner banner--offline banner--bar" data-offline-banner="" hidden role="status">
+					<svg class="icon banner__icon" aria-hidden="true">
+						<use href="./assets/img/spritemap.svg#sprite-wifi-off"></use>
+					</svg>
+					<div class="banner__body">
+						<b class="banner__title">Немає зв'язку</b>
+						<span>
+							Працюй далі. Операцій на телефоні:
+							<span data-queue-count="">0</span>
+							— відправляться автоматично.
+						</span>
+					</div>
+				</div>
+				<!-- E1 · Scan home ===================================================== -->
+				<section class="screen" data-screen="home" data-title="Склад">
+					<div class="screen__body screen__body--roomy">
+						<div class="scanner__who" data-scanner-user="" hidden>
+							<span class="avatar" data-slot="avatar" aria-hidden="true"></span>
+							<span class="scanner__who-name" data-slot="name"></span>
+							<button type="button" class="scanner__switch" data-logout="">Змінити користувача</button>
+							<select class="lang-select scanner__lang" data-lang-select="" aria-label="Language"></select>
+						</div>
+						<h2 class="screen__title" data-only="in">Розпочати підрахунок</h2>
+						<h2 class="screen__title" data-only="out" hidden>Знайти контейнер</h2>
+						<form class="scan-input" data-scan-form="" autocomplete="off">
+							<label class="scan-input__field">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-keyboard"></use>
+								</svg>
+								<span class="visually-hidden">Код контейнера</span>
+								<input class="scan-input__input" name="code" placeholder="MNBU…" inputmode="text" autocapitalize="characters" spellcheck="false" enterkeyhint="go">
+							</label>
+							<button type="button" class="scan-input__camera" data-camera="" aria-label="Сканувати камерою">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-scan"></use>
+								</svg>
+							</button>
+						</form>
+						<p class="screen__hint" data-scan-hint="">Сканером, камерою або вручну</p>
+						<p class="screen__hint" data-only="out" hidden>Скануй контейнер, щоб перемістити або списати.</p>
+						<!-- Відвантаження: issue by order (old order scanner, no QR pairing), market / write-off, day balance -->
+						<div class="action-card__grid" data-only="out" hidden>
+							<button type="button" class="action-card" data-go="issue-orders">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-file-check"></use>
+								</svg>
+								Видача за замовленням
+							</button>
+							<button type="button" class="action-card" data-go="market">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-box"></use>
+								</svg>
+								Маркет-палета
+							</button>
+							<button type="button" class="action-card" data-go="balance">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-chart"></use>
+								</svg>
+								Баланс дня
+							</button>
+						</div>
+					</div>
+					<div class="screen__footer screen__footer--plain">
+						<div class="toast-slot" data-toasts=""></div>
+						<p class="check-line check-line--sync" data-sync-line="">
+							<svg class="icon" aria-hidden="true">
+								<use href="./assets/img/spritemap.svg#sprite-check"></use>
+							</svg>
+							<span data-sync-text="">Готово до роботи</span>
+						</p>
+						<button type="submit" form="" class="btn btn--primary btn--xl btn--block" data-scan-submit="">Далі</button>
+					</div>
+				</section>
+				<!-- E2 · Receive pallet ================================================ -->
+				<section class="screen" data-screen="receive" data-title="Приймання" hidden>
+					<div class="screen__body">
+						<article class="container-card">
+							<div class="container-card__top">
+								<span class="container-card__code" data-slot="code"></span>
+								<span class="container-card__meta" data-slot="pickup"></span>
+							</div>
+							<span class="container-card__meta" data-slot="meta"></span>
+							<span class="progress progress--success" data-receive-bar="" style="--value: 0%">
+								<span class="progress__fill"></span>
+							</span>
+							<span class="container-card__count">
+								<b data-receive-counted="">0</b>
+								<span data-receive-expected=""></span>
+								ящ. · палета
+								<span data-receive-pallet="">1</span>
+							</span>
+						</article>
+						<div class="screen__row">
+							<label class="field field--lg">
+								<span class="field__label">Комора</span>
+								<input class="field__input" type="number" inputmode="numeric" min="1" max="29" data-chamber-input="">
+							</label>
+							<div class="field field--lg">
+								<span class="field__label" id="side-label">Сторона</span>
+								<div class="segmented segmented--lg" role="radiogroup" aria-labelledby="side-label" data-segmented="side">
+									<button type="button" class="segmented__option segmented__option--active" role="radio" aria-checked="true" data-value="LS">LS</button>
+									<button type="button" class="segmented__option" role="radio" aria-checked="false" tabindex="-1" data-value="RS">RS</button>
+								</div>
+							</div>
+						</div>
+						<p class="screen__hint screen__hint--tight" data-chamber-hint="">Комори 1–29</p>
+						<label class="field field--lg field--mono" data-plant-field="">
+							<span class="field__label">Код плантації</span>
+							<input class="field__input" spellcheck="false" autocapitalize="characters" data-plant-input="">
+						</label>
+						<p class="screen__hint screen__hint--tight" data-plant-hint="">Необов’язково для BIO</p>
+						<div class="field field--lg">
+							<span class="field__label" id="qty-label">Ящиків на палеті</span>
+							<div class="qty-picker" role="radiogroup" aria-labelledby="qty-label" data-value="48">
+								<button type="button" class="qty-picker__option qty-picker__option--active" role="radio" aria-checked="true" data-value="48">
+									48
+									<span class="qty-picker__sub">повна</span>
+								</button>
+								<button type="button" class="qty-picker__option" role="radio" aria-checked="false" data-value="40">40</button>
+								<button type="button" class="qty-picker__option" role="radio" aria-checked="false" data-value="32">32</button>
+								<button type="button" class="qty-picker__option" role="radio" aria-checked="false" data-value="24">24</button>
+								<label class="qty-picker__manual">
+									<span class="visually-hidden">Інша кількість</span>
+									<input class="field__input" type="number" inputmode="numeric" min="1" placeholder="інша кількість">
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="screen__footer">
+						<div class="toast-slot" data-toasts=""></div>
+						<button type="button" class="btn btn--primary btn--xl btn--block" data-add-pallet="">
+							+ Палета ·
+							<span data-qty-label="">48</span>
+							ящ.
+						</button>
+						<button type="button" class="btn btn--secondary btn--lg btn--block" data-go="complete">Завершити контейнер</button>
+					</div>
+				</section>
+				<!-- E3 · Complete container =========================================== -->
+				<section class="screen" data-screen="complete" data-title="Завершення" hidden>
+					<div class="screen__body">
+						<article class="container-card">
+							<span class="container-card__code" data-slot="code"></span>
+							<div class="container-card__stats">
+								<span class="container-card__stat">
+									<span>Очікувано</span>
+									<b data-slot="expected">—</b>
+								</span>
+								<span class="container-card__stat">
+									<span>Пораховано</span>
+									<b data-slot="counted">0</b>
+								</span>
+								<span class="container-card__stat container-card__stat--warn" data-slot="diff-box">
+									<span>Різниця</span>
+									<b data-diff="">0</b>
+								</span>
+							</div>
+						</article>
+						<span class="screen__label">Поясни різницю</span>
+						<div class="screen__row-3" data-explain="">
+							<label class="field field--number-xl">
+								<span class="field__label">DEC (SM)</span>
+								<input class="field__input" type="number" inputmode="numeric" min="0" value="0" data-explain-input="" data-cat="DEC">
+							</label>
+							<label class="field field--number-xl">
+								<span class="field__label">GS (ZM)</span>
+								<input class="field__input" type="number" inputmode="numeric" min="0" value="0" data-explain-input="" data-cat="GS">
+							</label>
+							<label class="field field--number-xl">
+								<span class="field__label">R+T</span>
+								<input class="field__input" type="number" inputmode="numeric" min="0" value="0" data-explain-input="" data-cat="RT">
+							</label>
+						</div>
+						<p class="check-line check-line--bad" data-explain-result="" aria-live="polite">
+							<svg class="icon" aria-hidden="true">
+								<use href="./assets/img/spritemap.svg#sprite-check"></use>
+							</svg>
+							<span>Все пояснено</span>
+						</p>
+						<!-- damage found at receiving: defects from the reference + photos (sent right away) -->
+						<span class="screen__label">Пошкодження</span>
+						<div class="damage-box">
+							<div class="damage-box__chips" data-slot="damage-chips">
+								<span class="damage-box__none">Не вибрано</span>
+							</div>
+							<div class="screen__row">
+								<button type="button" class="btn btn--secondary btn--lg" data-damage-pick="">Вибрати дефекти</button>
+								<label class="btn btn--secondary btn--lg damage-box__photo">
+									<svg class="icon" aria-hidden="true">
+										<use href="./assets/img/spritemap.svg#sprite-camera"></use>
+									</svg>
+									Фото
+									<input type="file" accept="image/*" capture="environment" multiple class="visually-hidden" data-damage-photo="">
+								</label>
+							</div>
+							<button type="button" class="btn btn--ghost btn--block damage-box__ref" data-damage-ref="">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-alert-circle"></use>
+								</svg>
+								Довідник дефектів
+							</button>
+							<label class="field" data-damage-for-row="" hidden>
+								<span class="field__label">Фото до дефекту</span>
+								<select class="field__input" data-damage-for=""></select>
+							</label>
+							<div class="damage-thumbs" data-slot="damage-thumbs"></div>
+						</div>
+					</div>
+					<div class="screen__footer">
+						<div class="toast-slot" data-toasts=""></div>
+						<button type="button" class="btn btn--primary btn--xl btn--block" data-complete="">Зберегти і завершити</button>
+						<button type="button" class="btn btn--secondary btn--lg btn--block" data-back-to="receive">Назад до приймання</button>
+					</div>
+				</section>
+				<!-- E4 · Container in chamber ========================================= -->
+				<section class="screen" data-screen="container" data-title="Контейнер" hidden>
+					<div class="screen__body">
+						<article class="container-card">
+							<span class="container-card__code" data-slot="code"></span>
+							<span class="container-card__meta" data-slot="meta"></span>
+						</article>
+						<span class="screen__label">У коморах</span>
+						<div class="place-list" data-slot="places"></div>
+						<div class="screen__row">
+							<button type="button" class="btn btn--secondary btn--lg" data-go="move">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-arrow-right"></use>
+								</svg>
+								Перемістити
+							</button>
+							<button type="button" class="btn btn--danger btn--lg" data-go="writeoff" data-only="out" hidden>
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-trash"></use>
+								</svg>
+								Списати
+							</button>
+						</div>
+					</div>
+					<div class="screen__footer" data-only="in">
+						<button type="button" class="btn btn--primary btn--xl btn--block" data-go="receive">+ Додати палету</button>
+					</div>
+				</section>
+				<!-- E5 · Move ========================================================== -->
+				<section class="screen" data-screen="move" data-title="Перемістити" hidden>
+					<div class="screen__body">
+						<span class="container-card__code" data-slot="code"></span>
+						<span class="screen__label" id="move-from">Звідки</span>
+						<div class="place-list place-list--grid" role="radiogroup" aria-labelledby="move-from" data-source="" data-slot="move-sources"></div>
+						<div class="screen__row">
+							<label class="field field--lg">
+								<span class="field__label">Куди · комора</span>
+								<input class="field__input" type="number" inputmode="numeric" min="1" max="29" data-move-to="">
+							</label>
+							<div class="field field--lg">
+								<span class="field__label" id="move-side">Сторона</span>
+								<div class="segmented segmented--lg" role="radiogroup" aria-labelledby="move-side" data-segmented="move-side">
+									<button type="button" class="segmented__option segmented__option--active" role="radio" aria-checked="true" data-value="LS">LS</button>
+									<button type="button" class="segmented__option" role="radio" aria-checked="false" tabindex="-1" data-value="RS">RS</button>
+								</div>
+							</div>
+						</div>
+						<p class="screen__hint screen__hint--tight" data-move-hint="">Комори 1–29</p>
+						<div class="field field--lg field--number-xl">
+							<label class="field__label" for="move-qty">Кількість ящиків</label>
+							<div class="screen__qty">
+								<input class="field__input" id="move-qty" type="number" inputmode="numeric" min="1" data-move-qty="">
+								<button type="button" class="screen__all" data-move-all="">
+									Усе
+									<small data-move-max="">0</small>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="screen__footer">
+						<div class="toast-slot" data-toasts=""></div>
+						<button type="button" class="btn btn--primary btn--xl btn--block" data-move-submit="">Перемістити</button>
+					</div>
+				</section>
+				<!-- E5 · Write-off ===================================================== -->
+				<section class="screen" data-screen="writeoff" data-title="Списати" hidden>
+					<div class="screen__body">
+						<span class="container-card__code" data-slot="code"></span>
+						<span class="screen__label" id="wo-from">Звідки</span>
+						<div class="place-list place-list--grid" role="radiogroup" aria-labelledby="wo-from" data-source="" data-slot="wo-sources"></div>
+						<span class="screen__label" id="wo-cat">Категорія</span>
+						<div class="segmented segmented--lg segmented--tall" role="radiogroup" aria-labelledby="wo-cat" data-segmented="wo-category">
+							<button type="button" class="segmented__option segmented__option--active" role="radio" aria-checked="true" data-value="R+T">
+								R+T
+								<small>маркет</small>
+							</button>
+							<button type="button" class="segmented__option" role="radio" aria-checked="false" tabindex="-1" data-value="GS">
+								GS
+								<small>зелені</small>
+							</button>
+							<button type="button" class="segmented__option" role="radio" aria-checked="false" tabindex="-1" data-value="DEC">
+								DEC
+								<small>утилізація</small>
+							</button>
+						</div>
+						<label class="field field--lg field--number-xl">
+							<span class="field__label">Кількість ящиків</span>
+							<input class="field__input" type="number" inputmode="numeric" min="1" data-wo-qty="">
+						</label>
+						<p class="screen__hint">Ящики підуть у комору 30 (CITRO).</p>
+					</div>
+					<div class="screen__footer">
+						<div class="toast-slot" data-toasts=""></div>
+						<button type="button" class="btn btn--danger-solid btn--xl btn--block" data-wo-submit="">Списати</button>
+					</div>
+				</section>
+				<!-- E6 · Market pallet ================================================= -->
+				<section class="screen" data-screen="market" data-title="Маркет-палета" hidden>
+					<div class="screen__body">
+						<div class="segmented segmented--lg segmented--tall" role="radiogroup" aria-label="Категорія палети" data-segmented="market-category">
+							<button type="button" class="segmented__option segmented__option--active" role="radio" aria-checked="true" data-value="R+T">
+								R+T
+								<small>маркет</small>
+							</button>
+							<button type="button" class="segmented__option" role="radio" aria-checked="false" tabindex="-1" data-value="GS">
+								GS
+								<small>зелені</small>
+							</button>
+							<button type="button" class="segmented__option" role="radio" aria-checked="false" tabindex="-1" data-value="DEC">
+								DEC
+								<small>утилізація</small>
+							</button>
+						</div>
+						<span class="screen__label">Скануй коробку · кожен скан = +1</span>
+						<form class="scan-input scan-input--sm" data-market-form="" autocomplete="off">
+							<label class="scan-input__field">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-keyboard"></use>
+								</svg>
+								<span class="visually-hidden">Код контейнера на коробці</span>
+								<input class="scan-input__input" name="code" placeholder="код коробки" autocapitalize="characters" spellcheck="false" enterkeyhint="done">
+							</label>
+							<button type="button" class="scan-input__camera" data-camera="" aria-label="Сканувати камерою">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-scan"></use>
+								</svg>
+							</button>
+						</form>
+						<ul class="market-list" data-market-list=""></ul>
+						<template id="market-row">
+							<li class="market-list__item is-fresh">
+								<span class="market-list__code"></span>
+								<input class="market-list__count" type="number" inputmode="numeric" min="0" value="1">
+								<button type="button" class="market-list__remove">
+									<svg class="icon" aria-hidden="true">
+										<use href="./assets/img/spritemap.svg#sprite-close"></use>
+									</svg>
+								</button>
+							</li>
+						</template>
+						<p class="market-list__total">
+							<span>Разом</span>
+							<b>
+								<span data-market-total="">0</span>
+								<small>ящ.</small>
+							</b>
+						</p>
+					</div>
+					<div class="screen__footer">
+						<p class="market-list__last" data-market-last="" aria-live="polite"></p>
+						<div class="toast-slot" data-toasts=""></div>
+						<button type="button" class="btn btn--primary btn--xl btn--block" data-market-save="">Зберегти палету</button>
+						<button type="button" class="btn btn--secondary btn--lg btn--block" data-market-clear="">Очистити</button>
+					</div>
+				</section>
+				<!-- E7 · Day balance =================================================== -->
+				<section class="screen" data-screen="balance" data-title="Баланс дня" hidden>
+					<div class="screen__body">
+						<label class="field field--lg">
+							<span class="visually-hidden">День</span>
+							<input class="field__input screen__date" type="date" data-balance-date="">
+						</label>
+						<div class="banner banner--danger banner--compact" data-balance-banner="" hidden>
+							<div class="banner__body" data-slot="balance-note"></div>
+						</div>
+						<div class="balance-list" data-slot="balance"></div>
+					</div>
+				</section>
+				<!-- E8 · Sync queue ==================================================== -->
+				<section class="screen" data-screen="queue" data-title="Черга синхронізації" hidden>
+					<div class="screen__body">
+						<span class="screen__label" data-slot="rejected-label" hidden></span>
+						<div class="sync-queue" data-slot="rejected"></div>
+						<span class="screen__label" data-slot="pending-label">Очікують · 0</span>
+						<div class="sync-queue" data-slot="pending"></div>
+						<p class="sync-queue__note" data-slot="queue-note">Операції відправляються по черзі, щойно є мережа.</p>
+					</div>
+					<div class="screen__footer">
+						<div class="toast-slot" data-toasts=""></div>
+						<button type="button" class="btn btn--primary btn--xl btn--block" data-send-now="">Надіслати зараз</button>
+					</div>
+				</section>
+				<!-- E9 · Order issue: orders of the day ================================ -->
+				<section class="screen" data-screen="issue-orders" data-title="Видача за замовленням" hidden>
+					<div class="screen__body">
+						<div class="issue__dates">
+							<label class="field field--lg">
+								<span class="visually-hidden">День</span>
+								<input class="field__input screen__date" type="date" data-issue-date="">
+							</label>
+							<button type="button" class="btn btn--secondary btn--lg" data-issue-day="0">Сьогодні</button>
+							<button type="button" class="btn btn--secondary btn--lg" data-issue-day="1">Завтра</button>
+						</div>
+						<div class="issue__orders" data-slot="issue-orders"></div>
+					</div>
+					<div class="screen__footer screen__footer--plain">
+						<div class="toast-slot" data-toasts=""></div>
+					</div>
+				</section>
+				<!-- E10 · Order issue: preparation ===================================== -->
+				<section class="screen" data-screen="issue-prep" data-title="Підготовка" hidden>
+					<div class="screen__body">
+						<div class="issue__card">
+							<b data-slot="issue-prep-title"></b>
+							<span data-slot="issue-prep-sub"></span>
+							<span class="issue__qty" data-slot="issue-prep-qty"></span>
+						</div>
+						<div class="issue__confirm" data-issue-confirm="" hidden>
+							<div class="banner banner--compact">
+								<div class="banner__body">У замовленні 0 ящиків. Підтвердь кількість, щоб почати.</div>
+							</div>
+							<label class="field field--lg">
+								<span class="field__label">Кількість ящиків</span>
+								<input class="field__input" type="number" inputmode="numeric" min="1" data-issue-confirm-qty="">
+							</label>
+							<button type="button" class="btn btn--primary btn--lg btn--block" data-issue-confirm-save="">Підтвердити кількість</button>
+						</div>
+						<span class="screen__label">Кількість ліній для сканування</span>
+						<div class="issue__stepper">
+							<button type="button" class="btn btn--secondary btn--lg" data-issue-step="-1" aria-label="Менше ліній">−</button>
+							<input class="field__input issue__count" type="number" inputmode="numeric" min="1" value="1" data-issue-lines="" aria-label="Кількість ліній для сканування">
+							<button type="button" class="btn btn--secondary btn--lg" data-issue-step="1" aria-label="Більше ліній">+</button>
+						</div>
+						<span class="screen__label">Як сканувати</span>
+						<div class="segmented segmented--lg segmented--tall issue__mode" role="radiogroup" aria-label="Як сканувати" data-segmented="issue-mode">
+							<button type="button" class="segmented__option segmented__option--active" role="radio" aria-checked="true" data-value="serial">
+								Серійне сканування
+								<small>камера · +1 за код</small>
+							</button>
+							<button type="button" class="segmented__option" role="radio" aria-checked="false" tabindex="-1" data-value="qty">
+								Введення кількості
+								<small>код, потім кількість</small>
+							</button>
+						</div>
+						<ol class="issue__preview" data-slot="issue-lines-preview"></ol>
+						<section class="issue__stk">
+							<span class="screen__label">Стікери</span>
+							<div class="issue__stk-row">
+								<label class="field field--lg">
+									<span class="field__label">Комора</span>
+									<input class="field__input" type="number" inputmode="numeric" min="1" data-stk-chamber="">
+								</label>
+								<label class="field field--lg">
+									<span class="field__label">Код плантації</span>
+									<input class="field__input" autocapitalize="characters" spellcheck="false" placeholder="напр. BAN215" data-stk-plant="">
+								</label>
+							</div>
+							<label class="field">
+								<span class="field__label">Шаблон</span>
+								<select class="field__input" data-stk-template="" data-no-i18n=""></select>
+							</label>
+							<div data-slot="stk-inputs"></div>
+							<div class="issue__stk-row" data-stk-gln-row="" hidden>
+								<label class="field field--lg">
+									<span class="field__label">GLN</span>
+									<input class="field__input" inputmode="numeric" maxlength="13" spellcheck="false" data-stk-gln="">
+								</label>
+								<button type="button" class="btn btn--secondary btn--lg" data-stk-gln-save="">Зберегти GLN</button>
+							</div>
+							<p class="screen__hint" data-slot="stk-gln-src"></p>
+							<p class="issue__stk-info" data-slot="stk-info"></p>
+							<div class="banner banner--compact" data-slot="stk-warn" hidden></div>
+							<div class="issue__stk-preview" data-slot="stk-preview" data-no-i18n=""></div>
+							<div class="issue__stk-row">
+								<label class="field field--lg">
+									<span class="field__label">Кількість стікерів</span>
+									<input class="field__input" type="number" inputmode="numeric" min="1" data-stk-copies="">
+								</label>
+								<button type="button" class="btn btn--secondary btn--lg" data-stk-print="" disabled>Друкувати</button>
+							</div>
+							<div class="issue__stk-log" data-stk-log="" hidden>
+								<p class="issue__stk-log-title">Надруковано для цього замовлення</p>
+								<ul data-slot="stk-log" data-no-i18n=""></ul>
+							</div>
+						</section>
+					</div>
+					<div class="screen__footer">
+						<div class="toast-slot" data-toasts=""></div>
+						<button type="button" class="btn btn--primary btn--xl btn--block" data-issue-start="">Почати сканування</button>
+					</div>
+				</section>
+				<!-- E11 · Order issue: scanning ======================================== -->
+				<section class="screen" data-screen="issue-scan" data-title="Сканування" hidden>
+					<div class="screen__body">
+						<p class="issue__head">
+							<b data-slot="issue-scan-title"></b>
+							<span data-slot="issue-progress-text"></span>
+						</p>
+						<span class="progress progress--lg progress--banana" data-slot="issue-progress" role="presentation">
+							<span class="progress__fill"></span>
+						</span>
+						<ol class="issue__lines" data-slot="issue-lines"></ol>
+						<span class="screen__label" data-issue-mode-only="serial">Серійне сканування · кожен код = +1 ящ.</span>
+						<span class="screen__label" data-issue-mode-only="qty" hidden>Скануй код, потім вкажи кількість</span>
+						<form class="scan-input scan-input--sm" data-issue-form="" autocomplete="off">
+							<label class="scan-input__field">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-keyboard"></use>
+								</svg>
+								<span class="visually-hidden">Код контейнера на коробці</span>
+								<input class="scan-input__input" name="code" placeholder="код коробки" autocapitalize="characters" spellcheck="false" enterkeyhint="done">
+							</label>
+							<button type="button" class="scan-input__camera" data-issue-camera="" aria-label="Сканувати камерою">
+								<svg class="icon" aria-hidden="true">
+									<use href="./assets/img/spritemap.svg#sprite-scan"></use>
+								</svg>
+							</button>
+						</form>
+						<div class="issue__qty-panel" data-issue-qtypanel="" hidden>
+							<p class="issue__qty-code">
+								<span>Код</span>
+								<b data-slot="issue-qty-code"></b>
+							</p>
+							<p class="issue__stock" data-slot="issue-qty-stock" aria-live="polite"></p>
+							<div class="qty-picker" role="radiogroup" aria-label="Кількість ящиків" data-issue-picker="">
+								<div class="qty-picker__options"></div>
+								<label class="qty-picker__manual">
+									<span class="visually-hidden">Інша кількість</span>
+									<input class="field__input" type="number" inputmode="numeric" min="1" placeholder="інша кількість">
+								</label>
+							</div>
+							<button type="button" class="btn btn--primary btn--xl btn--block" data-issue-qty-add="">
+								Додати ·
+								<span data-slot="issue-qty-label">0</span>
+								ящ.
+							</button>
+							<button type="button" class="btn btn--secondary btn--lg btn--block" data-issue-qty-cancel="">Скасувати</button>
+						</div>
+						<div class="issue__qty-panel" data-issue-nolabel="" hidden>
+							<p class="issue__qty-code">
+								<span>Ящики без номера контейнера</span>
+							</p>
+							<label class="field field--lg">
+								<span class="field__label">З якої комори</span>
+								<input class="field__input" type="number" inputmode="numeric" min="1" data-issue-nl-chamber="">
+							</label>
+							<label class="field field--lg">
+								<span class="field__label">Код плантації (якщо видно)</span>
+								<input class="field__input" autocapitalize="characters" spellcheck="false" placeholder="напр. BAN215" data-issue-nl-plant="">
+							</label>
+							<button type="button" class="btn btn--secondary btn--lg btn--block" data-issue-nl-find="">Підібрати контейнер</button>
+							<div class="issue__candidates" data-slot="issue-nl-list"></div>
+							<label class="field field--lg">
+								<span class="field__label">Кількість ящиків</span>
+								<input class="field__input" type="number" inputmode="numeric" min="1" data-issue-nl-qty="">
+							</label>
+							<button type="button" class="btn btn--primary btn--xl btn--block" data-issue-nl-add="" disabled>
+								Додати ·
+								<span data-slot="issue-nl-label">0</span>
+								ящ.
+							</button>
+							<button type="button" class="btn btn--secondary btn--lg btn--block" data-issue-nl-plain="">Додати без номера</button>
+							<button type="button" class="btn btn--secondary btn--lg btn--block" data-issue-nl-cancel="">Скасувати</button>
+						</div>
+						<div class="issue__tools">
+							<button type="button" class="btn btn--secondary issue__typeqty" data-issue-typeqty="">Ввести кількість</button>
+							<button type="button" class="btn btn--secondary" data-issue-nosticker="">Без наклейки</button>
+							<button type="button" class="btn btn--secondary" data-issue-undo="">Скасувати останній</button>
+						</div>
+						<p class="market-list__last" data-slot="issue-last" aria-live="polite"></p>
+						<p class="issue__stock" data-slot="issue-stock" aria-live="polite" hidden></p>
+					</div>
+					<div class="screen__footer">
+						<div class="toast-slot" data-toasts=""></div>
+						<button type="button" class="btn btn--primary btn--xl btn--block" data-go="issue-summary">Підсумок</button>
+						<button type="button" class="btn btn--danger btn--lg btn--block" data-issue-cancel="">Скасувати видачу</button>
+					</div>
+				</section>
+				<!-- E12 · Order issue: summary ========================================= -->
+				<section class="screen" data-screen="issue-summary" data-title="Підсумок" hidden>
+					<div class="screen__body">
+						<p class="issue__head">
+							<b data-slot="issue-summary-title"></b>
+						</p>
+						<div class="balance-list">
+							<section class="balance-list__section">
+								<h3 class="balance-list__title">Ящики за контейнерами</h3>
+								<div data-slot="issue-summary"></div>
+							</section>
+							<section class="balance-list__section">
+								<h3 class="balance-list__title">Разом</h3>
+								<p class="balance-list__row">
+									<span>Замовлено</span>
+									<b data-slot="issue-sum-ordered">0</b>
+								</p>
+								<p class="balance-list__row">
+									<span>Відскановано</span>
+									<b data-slot="issue-sum-got">0</b>
+								</p>
+								<p class="balance-list__row">
+									<span>Різниця</span>
+									<b data-slot="issue-sum-diff">0</b>
+								</p>
+							</section>
+						</div>
+					</div>
+					<div class="screen__footer">
+						<div class="toast-slot" data-toasts=""></div>
+						<button type="button" class="btn btn--primary btn--xl btn--block" data-issue-save="">Зберегти видачу</button>
+						<button type="button" class="btn btn--secondary btn--lg btn--block" data-issue-report="">Звіт клієнту</button>
+					</div>
+				</section>
+				<!-- Camera overlay ===================================================== -->
+				<div class="camera-overlay" data-camera-overlay="" hidden role="dialog" aria-modal="true" aria-label="Сканування камерою">
+					<video class="camera-overlay__video" data-camera-video="" playsinline="" muted></video>
+					<div class="camera-overlay__top">
+						<span>Сканування</span>
+						<button type="button" class="camera-overlay__close" data-camera-close="" aria-label="Закрити камеру">
+							<svg class="icon" aria-hidden="true">
+								<use href="./assets/img/spritemap.svg#sprite-close"></use>
+							</svg>
+						</button>
+					</div>
+					<div class="camera-overlay__center">
+						<div class="camera-overlay__viewfinder">
+							<span class="camera-overlay__corner camera-overlay__corner--tl"></span>
+							<span class="camera-overlay__corner camera-overlay__corner--tr"></span>
+							<span class="camera-overlay__corner camera-overlay__corner--bl"></span>
+							<span class="camera-overlay__corner camera-overlay__corner--br"></span>
+						</div>
+						<span class="camera-overlay__hint">Наведи на код контейнера</span>
+					</div>
+					<div class="camera-overlay__bottom">
+						<button type="button" class="camera-overlay__manual" data-issue-cam-qty="" hidden>Кількість</button>
+						<button type="button" class="camera-overlay__manual" data-camera-close="">Ввести вручну</button>
+					</div>
+				</div>
+				<template id="toast-success">
+					<div class="toast toast--success" role="status">
+						<svg class="icon toast__icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-check"></use>
+						</svg>
+						<div class="toast__body">
+							<span class="toast__title"></span>
+						</div>
+					</div>
+				</template>
+				<template id="toast-error">
+					<div class="toast toast--error" role="alert">
+						<svg class="icon toast__icon" aria-hidden="true">
+							<use href="./assets/img/spritemap.svg#sprite-x-circle"></use>
+						</svg>
+						<div class="toast__body">
+							<span class="toast__title"></span>
+							<span class="toast__text"></span>
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+	</body>
+</html>
