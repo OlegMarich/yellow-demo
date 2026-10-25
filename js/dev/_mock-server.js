@@ -1,57 +1,35 @@
 //#region src/components/services/_mock-sticker.svg?raw
 var _mock_sticker_default = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100mm\" height=\"70mm\" viewBox=\"0 0 100 70\" xmlns:c2pa=\"http://c2pa.org/manifest\"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo2OGRiOWVmOC1jODgxLTRlYzYtYWMzMi02MzEyMDQ5MzJmNGYAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaAvrBMRg+CT4bSwm2gHUrUsAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDo3Y2JmNjY3OS02ODg2LTQyODQtOTEwZS1kZGYyMzY1ZGVjMDZscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNonyesEbC1g4Iz0VTsny85dgAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgg80niRIQuyWz52SUIwReZ499D+A6JThqPWSwPLmU1JdqkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaNDVUsUP9F8K8J20zS8KLwQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCCMwlzP/7PuF1TWNp6U63eatBBKkXFw8II6vTDYp9Y3RmRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBiYZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjY4ZGI5ZWY4LWM4ODEtNGVjNi1hYzMyLTYzMTIwNDkzMmY0Zi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmY5ZTZlMWI3LTg5MDAtNDU2OC05YTVjLTFjZWE0MGQzNzg3NXJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCDzSeJEhC7JbPnZJQjBF5nj30P4DolOGo9ZLA8uZTUl2qJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgg8SIgNFpEXDO5NDnE31QegrntNYSMY1oxO447mhbb9fmiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggq9J4yPwiiotOpYqqEjiJatLBPeinDlP20IeO86Kewm10Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQH7xQVkMnLR0umLXEcUfzb93FceHcq1A4Z2+qEZGi2WSk+fxYpVKETuHDROqzJyApgTTr58ETWEoxrd1mr9kgTM=</c2pa:manifest></metadata><rect width=\"100\" height=\"70\" fill=\"#fff\"/><g fill=\"#000\"><text x=\"20.54\" y=\"7.57\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"middle\">SZÁLLÍTÓ:</text><text x=\"4.32\" y=\"11.35\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">Yellow Fresh Fruits Kft.</text><text x=\"4.32\" y=\"15.27\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">Asbóth Oszkár utca</text><text x=\"4.32\" y=\"19.05\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">093/389 hrsz.</text><text x=\"4.32\" y=\"22.97\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">2142 Nagytarcsa,</text><text x=\"4.32\" y=\"26.76\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">Hungary</text><text x=\"4.32\" y=\"29.73\" font-size=\"2.52\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">GGN: 4063651103830</text><text x=\"4.32\" y=\"33.51\" font-size=\"2.52\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">WAWI No. E4711</text><text x=\"4.32\" y=\"36.62\" font-size=\"2.12\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" text-anchor=\"start\">GLN:</text><g transform=\"translate(4.32 62.97) rotate(-90)\"><rect x=\"0\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"0.5\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"1\" y=\"0\" width=\"0.5\" height=\"9.19\"/><rect x=\"1.75\" y=\"0\" width=\"0.75\" height=\"9.19\"/><rect x=\"3.5\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"4\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"4.75\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"5.5\" y=\"0\" width=\"0.5\" height=\"9.19\"/><rect x=\"6.25\" y=\"0\" width=\"0.5\" height=\"9.19\"/><rect x=\"7.25\" y=\"0\" width=\"0.5\" height=\"9.19\"/><rect x=\"8\" y=\"0\" width=\"1\" height=\"9.19\"/><rect x=\"9.25\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"9.75\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"11\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"11.5\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"12\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"12.5\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"13.75\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"14.25\" y=\"0\" width=\"0.75\" height=\"9.19\"/><rect x=\"15.5\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"16\" y=\"0\" width=\"0.75\" height=\"9.19\"/><rect x=\"17.25\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"17.75\" y=\"0\" width=\"0.75\" height=\"9.19\"/><rect x=\"19\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"19.5\" y=\"0\" width=\"0.75\" height=\"9.19\"/><rect x=\"20.75\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"21.25\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"22\" y=\"0\" width=\"0.75\" height=\"9.19\"/><rect x=\"23\" y=\"0\" width=\"0.25\" height=\"9.19\"/><rect x=\"23.5\" y=\"0\" width=\"0.25\" height=\"9.19\"/><text x=\"11.875\" y=\"11.605\" font-size=\"2.3\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" text-anchor=\"middle\">7  862133  300005</text></g><text x=\"45\" y=\"7.57\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">Banán</text><text x=\"45\" y=\"11.35\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">FAJTA: Cavendish</text><text x=\"45\" y=\"15.27\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">Termesztő/Importőr: YELLOW</text><text x=\"45\" y=\"19.19\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">Származási ország: Ecuador</text><text x=\"45\" y=\"22.97\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">Tömeg: 18,14 kg</text><text x=\"45\" y=\"26.89\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">Kaliber: minimum 20 cm</text><text x=\"45\" y=\"30.81\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">Tételszám: pl. L 43/02</text><text x=\"45\" y=\"34.73\" font-size=\"2.78\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" font-weight=\"bold\" text-anchor=\"start\">(20.10.2026)</text><text x=\"38.78\" y=\"42.97\" font-size=\"2.12\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" text-anchor=\"start\">GTIN</text><g transform=\"translate(50 47.3)\"><rect x=\"0\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"0.75\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"1.875\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"3\" y=\"0\" width=\"0.75\" height=\"12.3\"/><rect x=\"4.125\" y=\"0\" width=\"1.125\" height=\"12.3\"/><rect x=\"6\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"7.125\" y=\"0\" width=\"0.75\" height=\"12.3\"/><rect x=\"8.625\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"9.75\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"10.875\" y=\"0\" width=\"0.75\" height=\"12.3\"/><rect x=\"12.375\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"13.125\" y=\"0\" width=\"1.125\" height=\"12.3\"/><rect x=\"14.625\" y=\"0\" width=\"0.75\" height=\"12.3\"/><rect x=\"16.125\" y=\"0\" width=\"0.75\" height=\"12.3\"/><rect x=\"17.25\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"18\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"18.75\" y=\"0\" width=\"0.75\" height=\"12.3\"/><rect x=\"20.25\" y=\"0\" width=\"0.75\" height=\"12.3\"/><rect x=\"21.375\" y=\"0\" width=\"0.75\" height=\"12.3\"/><rect x=\"22.875\" y=\"0\" width=\"0.75\" height=\"12.3\"/><rect x=\"24\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"25.875\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"26.625\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"27.375\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"29.25\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"30\" y=\"0\" width=\"1.125\" height=\"12.3\"/><rect x=\"31.875\" y=\"0\" width=\"0.75\" height=\"12.3\"/><rect x=\"33.375\" y=\"0\" width=\"0.75\" height=\"12.3\"/><rect x=\"34.5\" y=\"0\" width=\"0.375\" height=\"12.3\"/><rect x=\"35.25\" y=\"0\" width=\"0.375\" height=\"12.3\"/><text x=\"17.813\" y=\"15.135\" font-size=\"2.7\" font-family=\"Arial, Liberation Sans, DejaVu Sans, sans-serif\" text-anchor=\"middle\">4  251291  113641</text></g></g></svg>";
 var mock_seed_default = {
-	_note: "Demo data for the in-browser mock backend. Demo PIN: 2580 (admin 258025). The real server stores scrypt hashes only.",
+	_note: "Demo data for the in-browser mock backend: Oleg M is the administrator, three management users see and do everything except managing users and settings. Each has an own PIN. The real server stores scrypt hashes only.",
 	users: [
 		{
 			"id": "u1",
-			"name": "Олег М.",
-			"role": "ripener",
-			"pin": "2580",
-			"lastLoginAt": "2026-10-05T04:12:00Z"
+			"name": "Marek S",
+			"role": "management",
+			"pin": "862914",
+			"lastLoginAt": "2026-10-05T06:12:00Z"
 		},
 		{
 			"id": "u2",
-			"name": "Андрій К.",
-			"role": "logistics",
-			"pin": "2580",
+			"name": "Oleg M",
+			"role": "admin",
+			"pin": "417253",
 			"lastLoginAt": "2026-10-05T05:40:00Z"
 		},
 		{
 			"id": "u3",
-			"name": "Марія Т.",
-			"role": "quality",
-			"pin": "2580",
+			"name": "Gábor L",
+			"role": "management",
+			"pin": "539708",
 			"lastLoginAt": "2026-10-04T13:02:00Z"
 		},
 		{
 			"id": "u4",
-			"name": "Іван П.",
-			"role": "ripener",
-			"pin": "2580",
-			"lastLoginAt": "2026-10-05T03:58:00Z"
-		},
-		{
-			"id": "u5",
-			"name": "Петро Л.",
-			"role": "logistics",
-			"pin": "2580",
-			"lastLoginAt": "2026-10-02T16:20:00Z"
-		},
-		{
-			"id": "u6",
-			"name": "Адміністратор",
-			"role": "admin",
-			"pin": "258025",
-			"lastLoginAt": "2026-10-05T06:03:00Z"
-		},
-		{
-			"id": "u7",
-			"name": "Сергій Б.",
-			"role": "logistics",
-			"pin": "2580",
-			"disabled": true,
-			"lastLoginAt": "2026-09-14T10:10:00Z"
+			"name": "Wojtek C",
+			"role": "management",
+			"pin": "704386",
+			"lastLoginAt": "2026-10-05T07:58:00Z"
 		}
 	],
 	groups: [
@@ -153,6 +131,24 @@ var mock_seed_default = {
 				"scanner.market",
 				"users.manage",
 				"settings.edit"
+			]
+		},
+		{
+			"key": "management",
+			"label": "Management",
+			"perms": [
+				"dashboard.view",
+				"chambers.view",
+				"chambers.gasday",
+				"chambers.move",
+				"plans.upload",
+				"ripening.generate",
+				"stock.fill",
+				"stock.reconcile",
+				"reports.download",
+				"scanner.receive",
+				"scanner.ship",
+				"scanner.market"
 			]
 		},
 		{
@@ -15498,7 +15494,7 @@ var reports_default = {
 	dateLabel: "Mon 05.10.2026",
 	lastRun: {
 		"at": "07:42",
-		"by": "Андрій К.",
+		"by": "Marek S",
 		"file": "PLAN_week_41.xlsx",
 		"files": 24,
 		"trips": 8
@@ -16065,10 +16061,10 @@ var DEMO_DEFECTS = {
 function load() {
 	try {
 		const db = JSON.parse(localStorage.getItem(KEY));
-		if (db?.v === 1) return db;
+		if (db?.v === 3) return db;
 	} catch {}
 	return {
-		v: 1,
+		v: 3,
 		users: mock_seed_default.users.map((u) => ({
 			...u,
 			pinLength: u.pin.length,
